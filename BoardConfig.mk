@@ -115,6 +115,9 @@ TARGET_USERIMAGES_USE_F2FS := true
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/e1s
 
+# USB
+$(call soong_config_set,samsungUsbGadgetVars,gadget_name,17900000.dwc3)
+
 # Verified Boot
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS := --flags 3
