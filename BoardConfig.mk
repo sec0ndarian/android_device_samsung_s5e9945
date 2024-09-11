@@ -24,7 +24,7 @@ TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_VARIANT := cortex-a76
 
 # DTS
-BOARD_DTBO_CFG := device/samsung/e1s/configs/dtbo.cfg
+BOARD_DTBO_CFG := device/samsung/e1s/configs/kernel/dtbo.cfg
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_KERNEL_SEPARATED_DTBO := true
@@ -45,8 +45,12 @@ TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
 # Kernel
 BOARD_BOOT_HEADER_VERSION := 4
+BOARD_BOOTCONFIG := androidboot.serialconsole=0
 BOARD_KERNEL_IMAGE_NAME := Image
-BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOT_HEADER_VERSION)
+BOARD_MKBOOTIMG_ARGS := \
+    --vendor_cmdline "" \
+    --header_version $(BOARD_BOOT_HEADER_VERSION)
+BOARD_MKBOOTIMG_INIT_ARGS := $(BOARD_MKBOOTIMG_ARGS)
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
     DTC_FLAGS=-@ \
     KCFLAGS=-D__ANDROID_COMMON_KERNEL__ \
@@ -63,8 +67,8 @@ TARGET_KERNEL_CONFIG := \
 TARGET_KERNEL_NO_GCC := true
 
 # Modules
-BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD := $(shell cat device/samsung/e1s/configs/modules/ramdisk)
-BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(shell cat device/samsung/e1s/configs/modules/system)
+BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD := $(shell cat device/samsung/e1s/configs/kernel/modules/ramdisk)
+BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(shell cat device/samsung/e1s/configs/kernel/modules/system)
 BOARD_VENDOR_KERNEL_MODULES_LOAD := kiwi_v2.ko sec_debug_ssld_info.ko cfg80211.ko
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD)
 BOOT_KERNEL_MODULES := $(BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD)
@@ -92,3 +96,8 @@ BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     vendor \
     vendor_dlkm
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := $(shell echo $$(( $(BOARD_SUPER_PARTITION_SIZE) - 4 * 1024**2 )))
+
+# Ramdisks
+BOARD_RAMDISK_USE_LZ4 := true
+BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
+BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.MKBOOTIMG_ARGS := --ramdisk_type DLKM

@@ -1,0 +1,4 @@
+# Proprietary files
+
+# GPU firmware
+recovery/root/lib/firmware/sgpu/vangogh_lite_unified_evt1.bin
