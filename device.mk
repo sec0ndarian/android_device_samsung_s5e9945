@@ -41,4 +41,5 @@ PRODUCT_PACKAGES += \
     linker.vendor_ramdisk \
     toolbox.vendor_ramdisk
 
-$(call inherit-product-if-exists, vendor/samsung/e1s/device-vendor.mk)
+# Proprietary files
+$(call inherit-product, vendor/samsung/e1s/e1s-vendor.mk)

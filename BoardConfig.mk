@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-# Use the non-open-source parts, if they're present
--include vendor/samsung/e1s/BoardConfigVendor.mk
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv9-a
@@ -28,6 +25,9 @@ BOARD_DTBO_CFG := device/samsung/e1s/configs/kernel/dtbo.cfg
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_KERNEL_SEPARATED_DTBO := true
+
+# Display
+TARGET_SCREEN_DENSITY := 418
 
 # Filesystem
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -101,3 +101,19 @@ BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := $(shell echo $$(( $(BOARD_SUPER_PARTITI
 BOARD_RAMDISK_USE_LZ4 := true
 BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
 BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.MKBOOTIMG_ARGS := --ramdisk_type DLKM
+
+# Recovery
+BOARD_RECOVERY_MKBOOTIMG_ARGS := \
+    --cmdline "" \
+    --header_version 2
+TARGET_RECOVERY_FSTAB := device/samsung/e1s/configs/init/fstab.s5e9945
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+TARGET_USERIMAGES_USE_F2FS := true
+
+# Verified Boot
+BOARD_AVB_ENABLE := true
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS := --flags 3
+BOARD_AVB_RECOVERY_ALGORITHM := NONE
+BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 0
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 0
