@@ -15,5 +15,3 @@
 #
 
 PRODUCT_MAKEFILES := $(LOCAL_DIR)/full_e1s.mk
-
-COMMON_LUNCH_CHOICES := full_e1s-trunk_staging-userdebug
