@@ -110,6 +110,9 @@ TARGET_RECOVERY_FSTAB := device/samsung/e1s/configs/init/fstab.s5e9945
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_F2FS := true
 
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/e1s
+
 # Verified Boot
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS := --flags 3
