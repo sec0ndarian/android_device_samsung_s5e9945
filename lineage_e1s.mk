@@ -16,13 +16,16 @@
 
 ## Inherit from generic products, most specific first
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
 
 ## Inherit from e1s device
 $(call inherit-product, device/samsung/e1s/device.mk)
 
-PRODUCT_NAME := full_e1s
+## Inherit some common Lineage stuff
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+PRODUCT_NAME := lineage_e1s
 PRODUCT_DEVICE := e1s
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := e1s
