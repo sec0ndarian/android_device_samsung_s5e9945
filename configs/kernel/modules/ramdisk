@@ -164,7 +164,6 @@ pablo-hws.ko
 pablo-libs.ko
 votf.ko
 pablo-icpu.ko
-pablo-self-tests.ko
 pablo-smc.ko
 jsqz.ko
 mcfrc.ko
