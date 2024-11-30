@@ -28,6 +28,7 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 
 # Display
 TARGET_SCREEN_DENSITY := 418
+TARGET_USES_VULKAN := true
 
 # Filesystem
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -96,6 +97,9 @@ BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     vendor \
     vendor_dlkm
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := $(shell echo $$(( $(BOARD_SUPER_PARTITION_SIZE) - 4 * 1024**2 )))
+
+# Properties
+TARGET_VENDOR_PROP += device/samsung/e1s/configs/vendor.prop
 
 # Ramdisks
 BOARD_RAMDISK_USE_LZ4 := true

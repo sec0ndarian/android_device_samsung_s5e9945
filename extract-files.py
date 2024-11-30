@@ -21,6 +21,15 @@ namespace_imports = [
 blob_fixups: blob_fixups_user_type = {
     'vendor/etc/init/init.s5e9945.rc': blob_fixup()
         .regex_replace('vendor_spay', 'system'),
+    'vendor/lib64/hw/vulkan.samsung.so': blob_fixup()
+        .clear_symbol_version('AHardwareBuffer_acquire')
+        .clear_symbol_version('AHardwareBuffer_allocate')
+        .clear_symbol_version('AHardwareBuffer_describe')
+        .clear_symbol_version('AHardwareBuffer_getId')
+        .clear_symbol_version('AHardwareBuffer_getNativeHandle')
+        .clear_symbol_version('AHardwareBuffer_release'),
+    'vendor/lib64/libexynosgraphicbuffer.so': blob_fixup()
+        .add_needed('libshim_ui.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(

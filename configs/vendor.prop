@@ -1,0 +1,3 @@
+# Graphics
+ro.hardware.vulkan=samsung
+ro.opengles.version=196610
