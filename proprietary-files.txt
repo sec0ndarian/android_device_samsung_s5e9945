@@ -54,6 +54,11 @@ vendor/lib64/libsecril-client.so
 
 ## Security
 
+# Gatekeeper
+vendor/bin/hw/android.hardware.gatekeeper-service
+vendor/etc/init/android.hardware.gatekeeper-service.rc
+vendor/lib64/hw/gatekeeper.s5e9945.so
+
 # Keymint
 vendor/bin/hw/android.hardware.security.keymint-service
 vendor/etc/init/android.hardware.security.keymint-service.rc:vendor/etc/init/android.hardware.security.keymint-service.samsung.rc

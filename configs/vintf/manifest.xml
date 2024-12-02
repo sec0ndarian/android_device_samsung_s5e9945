@@ -1,5 +1,12 @@
 <manifest version="1.0" type="device" target-level="8">
     <hal format="aidl">
+        <name>android.hardware.gatekeeper</name>
+        <interface>
+            <name>IGatekeeper</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
         <name>android.hardware.graphics.allocator</name>
         <interface>
             <name>IAllocator</name>
