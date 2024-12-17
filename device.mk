@@ -17,6 +17,13 @@
 # API Levels
 PRODUCT_SHIPPING_API_LEVEL := 34
 
+# Dynamic Partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+# Soong Namespaces
+PRODUCT_SOONG_NAMESPACES := hardware/samsung
+
+
 # Display
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
@@ -42,6 +49,7 @@ PRODUCT_COPY_FILES += \
 
 # Kernel Modules
 PRODUCT_COPY_FILES += /dev/null:$(TARGET_COPY_OUT_RECOVERY)/root/dev/null
+
 PRODUCT_PACKAGES += \
     linker.vendor_ramdisk \
     toolbox.vendor_ramdisk
@@ -50,8 +58,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.keystore.app_attest_key.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.keystore.app_attest_key.xml
 
-# Partitions
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
+# USB
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
+
+PRODUCT_PACKAGES += android.hardware.usb-service.samsung
 
 # VNDK
 PRODUCT_PACKAGES += vndservicemanager
