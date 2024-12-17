@@ -57,5 +57,8 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_PACKAGES += vndservicemanager
 
 
-# Proprietary files
+# Dalvik Heap
+$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
+
+# Proprietary Files
 $(call inherit-product, vendor/samsung/e1s/e1s-vendor.mk)
