@@ -44,6 +44,12 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_SOONG_NAMESPACES += hardware/samsung
 
 
+# Audio
+PRODUCT_PACKAGES += \
+    android.hardware.audio.effect@7.0-impl \
+    android.hardware.audio.service \
+    android.hardware.audio@7.1-impl
+
 # Display
 $(call inherit-product, $(SRC_TARGET_DIR)/product/angle_default.mk)
 
