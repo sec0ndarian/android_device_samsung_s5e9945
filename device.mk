@@ -14,17 +14,39 @@
 # limitations under the License.
 #
 
+# Inherit dalvik heap configuration
+$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
+
+# Inherit from generic products, most specific first
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Inherit proprietary files
+$(call inherit-product, vendor/samsung/e1s/e1s-vendor.mk)
+
+# Inherit some common Lineage stuff
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+
 # API Levels
 PRODUCT_SHIPPING_API_LEVEL := 34
 
-# Dynamic Partitions
+# Branding
+PRODUCT_BRAND := Android
+PRODUCT_MANUFACTURER := samsung
+
+# Partitions
+$(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
+
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Soong Namespaces
-PRODUCT_SOONG_NAMESPACES := hardware/samsung
+PRODUCT_SOONG_NAMESPACES += hardware/samsung
 
 
 # Display
+$(call inherit-product, $(SRC_TARGET_DIR)/product/angle_default.mk)
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
     frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute-0.xml \
@@ -70,10 +92,3 @@ PRODUCT_PACKAGES += \
 
 # VNDK
 PRODUCT_PACKAGES += vndservicemanager
-
-
-# Dalvik Heap
-$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
-
-# Proprietary Files
-$(call inherit-product, vendor/samsung/e1s/e1s-vendor.mk)
