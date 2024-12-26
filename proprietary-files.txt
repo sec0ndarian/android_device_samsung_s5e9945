@@ -1,52 +1,52 @@
 # Proprietary files
 
-## Bluetooth
+# Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.1-service-qti
 vendor/etc/init/android.hardware.bluetooth@1.1-service-qti.rc
 vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
 vendor/lib64/hw/android.hardware.bluetooth@1.1-impl-qti.so
 vendor/lib64/vendor.samsung.hardware.bluetooth@2.0.so
 
-
-## Display
-
-# DQE
+# Display - DQE
 vendor/etc/dqe/calib_data_colormode0_off.xml
 vendor/etc/dqe/calib_data_colormode0_s6e3fae_e1.xml
 vendor/etc/dqe/calib_data_colormode0_s6e3fae_e1_hdr.xml
 
-# GPU firmware
+# Display - GPU firmware
 recovery/root/lib/firmware/sgpu/vangogh_lite_unified_evt1.bin
 
-# Gralloc
+# Display - Gralloc
 vendor/bin/hw/android.hardware.graphics.allocator-aidl-service-sgr
 vendor/etc/init/android.hardware.graphics.allocator-aidl-service-sgr.rc
 vendor/lib64/libeis_utils.so
 vendor/lib64/libion_exynos.so
 
-# Graphics
+# Display - Graphics
 vendor/lib64/hw/vulkan.samsung.so
 vendor/lib64/libdrm_sgpu.so
 vendor/lib64/hw/android.hardware.graphics.mapper@4.0-impl-sgr.so
 vendor/lib64/libsbwchelper.so
 
-# HWC
+# Display - HDR
+vendor/lib64/libdisplaycolor_default.so
+vendor/lib64/libhdrwrapper.so
+vendor/lib64/vendor.samsung.libcolor.hardware.so
+
+# Display - HWC
 vendor/bin/hw/android.hardware.graphics.composer3-service.exynos
 vendor/etc/init/hwc3.rc
 vendor/etc/vintf/manifest/hwc3.xml
 vendor/lib64/android.hardware.graphics.extension.composer3-V1-ndk.so
 vendor/lib64/libExynosHWCService.so
+
+# Display - HWC Dependencies
 vendor/lib64/libacryl.so
-vendor/lib64/libdisplaycolor_default.so
 vendor/lib64/libdrmresource.so
 vendor/lib64/libexynosdisplay.so
 vendor/lib64/libexynosgraphicbuffer.so
 vendor/lib64/libexynosgraphicbuffer_core.so
-vendor/lib64/libhdrwrapper.so
-vendor/lib64/vendor.samsung.libcolor.hardware.so
 
-
-## Firmware
+# Firmware
 vendor/firmware/00_generic_xtalk_shape.bin
 vendor/firmware/AIE.bin
 vendor/firmware/APBargeIn_AUDIO_SLSI.bin
@@ -162,29 +162,23 @@ vendor/firmware/wlan-connection-roaming-backup.ini
 vendor/firmware/wlan-connection-roaming.ini
 vendor/firmware/wlan/kiwi_v2/qcom_cfg.ini
 
-
-## Init
+# Init
 recovery/root/init.recovery.s5e9945.rc
 vendor/etc/init/init.s5e9945.rc
 vendor/etc/ueventd.rc
 
-
-## Power
+# Power
 vendor/lib64/libepic_helper.so
 
-
-## RIL
+# RIL
 vendor/lib64/libsecril-client.so
 
-
-## Security
-
-# Gatekeeper
+# Security - Gatekeeper
 vendor/bin/hw/android.hardware.gatekeeper-service
 vendor/etc/init/android.hardware.gatekeeper-service.rc
 vendor/lib64/hw/gatekeeper.s5e9945.so
 
-# Keymint
+# Security - Keymint
 vendor/bin/hw/android.hardware.security.keymint-service
 vendor/etc/init/android.hardware.security.keymint-service.rc:vendor/etc/init/android.hardware.security.keymint-service.samsung.rc
 vendor/etc/permissions/android.hardware.hardware_keystore.xml:vendor/etc/permissions/android.hardware.hardware_keystore.samsung.xml
@@ -192,14 +186,14 @@ vendor/lib64/libskeymint10device.so
 vendor/lib64/libskeymint_cli.so
 vendor/lib64/vendor.samsung.hardware.keymint-V3-ndk.so
 
-# Keymint Dependencies
+# Security - Keymint Dependencies
 vendor/lib64/libhermes_cred.so
 vendor/lib64/libsec_esek.so
 vendor/lib64/libsec_semHalTlc.so
 vendor/lib64/libsec_semRil.so
 vendor/lib64/libspictrl.so
 
-# Teegris
+# Security - TEEGRIS
 vendor/bin/tzdaemon
 vendor/bin/tzts_daemon
 vendor/etc/init/teegris.rc
@@ -207,7 +201,7 @@ vendor/etc/init/teegris_tui.rc
 vendor/lib64/libteecl.so
 vendor/lib64/libuuid.so;MODULE_SUFFIX=_vendor
 
-# Teegris Firmware
+# Security - TEEGRIS Firmware
 vendor/tee/00000000-0000-0000-0000-000000010081
 vendor/tee/00000000-0000-0000-0000-000000020081
 vendor/tee/00000000-0000-0000-0000-000000534b4d
