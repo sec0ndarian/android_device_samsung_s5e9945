@@ -13,7 +13,7 @@ vendor/etc/dqe/calib_data_colormode0_s6e3fae_e1.xml
 vendor/etc/dqe/calib_data_colormode0_s6e3fae_e1_hdr.xml
 
 # Display - GPU firmware
-recovery/root/lib/firmware/sgpu/vangogh_lite_unified_evt1.bin
+recovery/ramdisk/lib/firmware/sgpu/vangogh_lite_unified_evt1.bin:recovery/root/lib/firmware/sgpu/vangogh_lite_unified_evt1.bin
 
 # Display - Gralloc
 vendor/bin/hw/android.hardware.graphics.allocator-aidl-service-sgr
@@ -163,7 +163,7 @@ vendor/firmware/wlan-connection-roaming.ini
 vendor/firmware/wlan/kiwi_v2/qcom_cfg.ini
 
 # Init
-recovery/root/init.recovery.s5e9945.rc
+recovery/ramdisk/init.recovery.s5e9945.rc:recovery/root/init.recovery.s5e9945.rc
 vendor/etc/init/init.s5e9945.rc
 vendor/etc/ueventd.rc
 
