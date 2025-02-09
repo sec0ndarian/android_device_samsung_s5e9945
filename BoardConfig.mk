@@ -115,7 +115,7 @@ BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.MKBOOTIMG_ARGS := --ramdisk_type DLKM
 BOARD_RECOVERY_MKBOOTIMG_ARGS := \
     --cmdline "" \
     --header_version 2
-TARGET_RECOVERY_FSTAB := device/samsung/e1s/configs/init/fstab.s5e9945
+TARGET_RECOVERY_FSTAB_GENRULE := gen_fstab_s5e9945_recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_F2FS := true
 
