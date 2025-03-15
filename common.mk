@@ -104,6 +104,9 @@ PRODUCT_PACKAGES += hdr_samsung_mx.key
 # Fastbootd
 PRODUCT_PACKAGES += fastbootd
 
+# Fingerprint
+PRODUCT_PACKAGES += android.hardware.biometrics.fingerprint-service.samsung
+
 # General
 PRODUCT_PACKAGES += vndservicemanager
 
@@ -149,6 +152,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.flash-autofocus.prebuilt.xml \
     android.hardware.camera.full.prebuilt.xml \
     android.hardware.camera.raw.prebuilt.xml \
+    android.hardware.fingerprint.prebuilt.xml \
     android.hardware.hardware_keystore_V3.xml \
     android.hardware.nfc.hce.prebuilt.xml \
     android.hardware.nfc.prebuilt.xml \

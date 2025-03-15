@@ -10,6 +10,10 @@ ro.audio.spatializer_enabled=true
 debug.stagefright.c2inputsurface=-1
 vendor.debug.c2.sbwc.enable=true
 
+# Fingerprint
+ro.vendor.fingerprint.force_calibrate=1
+ro.vendor.fingerprint.type=udfps
+
 # Graphics
 ro.hardware.vulkan=samsung
 ro.opengles.version=196610
