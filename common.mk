@@ -32,7 +32,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # Inherit proprietary files
-$(call inherit-product, vendor/samsung/e1s/e1s-vendor.mk)
+$(call inherit-product, vendor/samsung/s5e9945/s5e9945-vendor.mk)
 
 # Inherit some common Lineage stuff
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
@@ -42,7 +42,7 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 PRODUCT_SHIPPING_API_LEVEL := 34
 
 # Branding
-PRODUCT_BRAND := Android
+PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 
 # Overlays
@@ -58,6 +58,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # Soong Namespaces
 PRODUCT_SOONG_NAMESPACES += \
     bootable/deprecated-ota \
+    device/samsung/s5e9945 \
     hardware/google/interfaces \
     hardware/google/pixel \
     hardware/qcom-caf/wlan \
@@ -96,7 +97,7 @@ PRODUCT_PACKAGES += com.android.hardware.drm.clearkey
 $(call inherit-product, $(SRC_TARGET_DIR)/product/angle_default.mk)
 
 PRODUCT_COPY_FILES += \
-    vendor/samsung/e1s/proprietary/recovery/root/lib/firmware/sgpu/vangogh_lite_unified_evt1.bin:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/firmware/sgpu/vangogh_lite_unified_evt1.bin
+    vendor/samsung/s5e9945/proprietary/recovery/root/lib/firmware/sgpu/vangogh_lite_unified_evt1.bin:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/firmware/sgpu/vangogh_lite_unified_evt1.bin
 
 PRODUCT_PACKAGES += hdr_samsung_mx.key
 

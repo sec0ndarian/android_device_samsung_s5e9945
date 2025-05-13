@@ -246,10 +246,8 @@ fingerprint_sysfs.ko
 qfs4008_spidev.ko
 usb_repeater_module.ko
 sb-core.ko
-mcd-panel-s6e3fae_e1s.ko
 pdic_notifier_module.ko
 mcd-panel.ko
-sec-auth-ds28e30.ko
 input-cs40l26-i2c.ko
 s2dos05-regulator.ko
 hall_ic.ko
