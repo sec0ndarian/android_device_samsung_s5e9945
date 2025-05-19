@@ -198,6 +198,8 @@ on init
     write /dev/cpuset/background/cpus 0-3
     write /dev/cpuset/system-background/cpus 0-3
 
+    setprop vendor.powerhal.init 1
+
     # Apply network parameters for high data performance.
     write /proc/sys/net/core/rmem_default 229376
     write /proc/sys/net/core/rmem_max 16777216
