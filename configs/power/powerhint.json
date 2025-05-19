@@ -1,19 +1,125 @@
 {
     "Nodes": [
         {
-            "Name": "Placeholder",
-            "Path": "/dev/null",
+            "Name": "CPUMinFreq",
+            "Path": "/sys/devices/system/cpu/cpufreq_limit/cpufreq_min_limit",
             "Values": [
+                "-1",
+                "1152000",
+                "2688000"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "MIFMinFreq",
+            "Path": "/sys/devices/platform/17000010.devfreq_mif/devfreq/17000010.devfreq_mif/scaling_devfreq_min",
+            "Values" : [
+                "0",
+                "1014000"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "TABoost",
+            "Path": "/sys/kernel/ems/taskgroup/top-app/uclamp_min",
+            "Values": [
+                "0",
+                "40"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "EMSTUNE_REQLEVEL",
+            "Path": "/sys/kernel/ems/emstune/req_level",
+            "Values": [
+                "0",
+                "2"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "KernelAppStartNotify",
+            "Path": "/sys/kernel/mm/vmscan/am_app_launch",
+            "Values": [
+                "0",
+                "1"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "KernelAppStartNotifyZram",
+            "Path": "/sys/kernel/zram/app_launch",
+            "Values": [
+                "0",
+                "1"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "LPMEnable",
+            "Path": "/sys/devices/platform/exynos-ufcc/ucc/cstate_control",
+            "Values": [
+                "1",
                 "0"
-            ]
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
         }
     ],
     "Actions": [
         {
-            "PowerHint": "PLACEHOLDER",
-            "Node": "Placeholder",
-            "Duration": 0,
+            "PowerHint": "LAUNCH",
+            "Node": "CPUMinFreq",
+            "Duration": 1000,
+            "Value": "2688000"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "TABoost",
+            "Duration": 1000,
+            "Value": "40"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "EMSTUNE_REQLEVEL",
+            "Duration": 1000,
+            "Value": "2"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "KernelAppStartNotify",
+            "Duration": 1000,
+            "Value": "1"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "KernelAppStartNotifyZram",
+            "Duration": 1000,
+            "Value": "1"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "LPMEnable",
+            "Duration": 1000,
             "Value": "0"
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "CPUMinFreq",
+            "Duration": 250,
+            "Value": "1152000"
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "MIFMinFreq",
+            "Duration": 250,
+            "Value": "1014000"
         }
     ]
 }
