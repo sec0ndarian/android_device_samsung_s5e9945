@@ -183,7 +183,8 @@ PRODUCT_PACKAGES += \
 # RIL
 PRODUCT_PACKAGES += \
     secril_config_svc \
-    sehradiomanager
+    sehradiomanager \
+    sehradiomanager.conf
 
 # Secure Element
 PRODUCT_PACKAGES += android.hardware.secure_element-service.thales-st33
