@@ -1,0 +1,1 @@
+allow hal_wifi_default socket_device:dir rw_dir_perms;

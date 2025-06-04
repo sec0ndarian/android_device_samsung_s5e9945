@@ -27,6 +27,9 @@ blob_fixups: blob_fixups_user_type = {
     'product/etc/sysconfig/sysconfig_gemini.xml': blob_fixup()
         .regex_replace('.*O.*\n', '')
         .regex_replace('<f', '    <f'),
+    'vendor/bin/hermesd': blob_fixup()
+        .binary_regex_replace(b'security.securehw.available', b'vendor.securehw.available\x00\x00')
+        .binary_regex_replace(b'security.securenvm.available', b'vendor.securenvm.available\x00\x00'),
     'vendor/bin/hw/android.hardware.graphics.composer3-service.exynos': blob_fixup()
         .replace_needed(
             'android.hardware.graphics.composer@2.1-resources.so',

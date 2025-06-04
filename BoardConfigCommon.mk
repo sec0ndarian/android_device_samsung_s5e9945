@@ -125,6 +125,9 @@ TARGET_USERIMAGES_USE_F2FS := true
 TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)
 
 # SELinux
+BOARD_SEPOLICY_TEE_FLAVOR := teegris
+BOARD_VENDOR_SEPOLICY_DIRS := $(COMMON_PATH)/sepolicy/vendor
+
 include device/samsung_slsi/sepolicy/sepolicy.mk
 
 # USB
