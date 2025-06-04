@@ -1,0 +1,19 @@
+# /data
+type vendor_gatekeeper_data_file, file_type, data_file_type;
+
+# Efs
+type keymaster_efs_file, fs_type;
+
+# Memboost
+type sysfs_memboost_writable, rw_fs_type, fs_type;
+
+# Procfs
+type proc_swappiness, proc_type, fs_type, rw_fs_type;
+
+# Sockets
+type hermes_socket, file_type, data_file_type;
+
+# Sysfs
+type sysfs_camera_writable, rw_fs_type, fs_type;
+type sysfs_v4l, sysfs_type, r_fs_type, fs_type;
+type sysfs_vendor_display, sysfs_type, rw_fs_type, fs_type;

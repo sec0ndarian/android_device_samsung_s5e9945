@@ -1,0 +1,7 @@
+get_prop(vendor_init, vts_status_prop)
+
+set_prop(vendor_init, vendor_cbd_prop)
+set_prop(vendor_init, vendor_radio_prop)
+
+allow vendor_init cgroup:file rw_file_perms;
+allow vendor_init proc_swappiness:file rw_file_perms;
