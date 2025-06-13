@@ -211,6 +211,9 @@ PRODUCT_PACKAGES += \
     android.hardware.usb.gadget-service.samsung \
     init.s5e9945.usb.rc
 
+# Vibrator
+PRODUCT_PACKAGES += android.hardware.vibrator-service.samsung
+
 # Wi-Fi
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
