@@ -36,14 +36,9 @@ vendor/lib64/libspatializerparamstorage.so
 vendor/lib64/soundfx/libaudioeffectoffload.so
 vendor/lib64/soundfx/libmyspace.so
 
-# Audio - Hotword
+# Audio - Sound Trigger
 vendor/etc/sound_trigger_info.xml
 vendor/lib64/hw/sound_trigger.primary.s5e9945.so
-system_ext/framework/com.android.hotwordenrollment.common.util.jar
-system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
-product/etc/permissions/privapp-permissions-google-product.xml
-product/priv-app/HotwordEnrollmentOKGoogleEx4CORTEXM55/HotwordEnrollmentOKGoogleEx4CORTEXM55.apk
-product/priv-app/HotwordEnrollmentXGoogleEx4CORTEXM55/HotwordEnrollmentXGoogleEx4CORTEXM55.apk
 
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.1-service-qti
@@ -273,6 +268,16 @@ vendor/firmware/volumemonitor.bin
 vendor/firmware/wlan-connection-roaming-backup.ini
 vendor/firmware/wlan-connection-roaming.ini
 vendor/firmware/wlan/kiwi_v2/qcom_cfg.ini
+
+# Google
+product/etc/permissions/privapp-permissions-google-product.xml
+product/etc/sysconfig/asi_features.xml
+product/etc/sysconfig/sysconfig_contextual_search.xml
+product/etc/sysconfig/sysconfig_gemini.xml
+product/priv-app/HotwordEnrollmentOKGoogleEx4CORTEXM55/HotwordEnrollmentOKGoogleEx4CORTEXM55.apk
+product/priv-app/HotwordEnrollmentXGoogleEx4CORTEXM55/HotwordEnrollmentXGoogleEx4CORTEXM55.apk
+system_ext/framework/com.android.hotwordenrollment.common.util.jar
+system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
 
 # Haptics
 vendor/bin/hw/vendor.samsung.hardware.vibrator-service
