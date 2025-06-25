@@ -4,6 +4,7 @@
 # DEV
 /dev/btpower                                                            u:object_r:bt_device:s0
 /dev/dri(/.*)?                                                          u:object_r:gpu_device:s0
+/dev/gnss_ipc                                                           u:object_r:gnss_device:s0
 /dev/jsqz                                                               u:object_r:jsqz_device:s0
 /dev/p3                                                                 u:object_r:secure_element_device:s0
 /dev/qbt2000_fd                                                         u:object_r:fp_sensor_device:s0
@@ -36,6 +37,8 @@
 # Services
 /vendor/bin/dmd                                                         u:object_r:dmd_exec:s0
 /vendor/bin/hermesd                                                     u:object_r:hermesd_exec:s0
+/vendor/bin/hw/gps.sh                                                   u:object_r:gpsd_exec:s0
+/vendor/bin/hw/gpsd_K43                                                 u:object_r:gpsd_exec:s0
 /vendor/bin/init\.insmod\.sh                                            u:object_r:vendor_insmod_exec:s0
 
 /vendor/bin/hw/android\.hardware\.bluetooth@[0-9]\.[0-9]-service-qti    u:object_r:hal_bluetooth_default_exec:s0
@@ -45,6 +48,7 @@
 /vendor/bin/hw/android\.hardware\.vibrator-service\.s5e9945             u:object_r:hal_vibrator_default_exec:s0
 /vendor/bin/hw/samsung\.software\.media\.c2@[0-9]\.[0-9]-service        u:object_r:mediacodec_exec:s0
 /vendor/bin/hw/vendor\.samsung\.hardware\.camera\.provider-service_64   u:object_r:hal_camera_default_exec:s0
+/vendor/bin/hw/vendor\.samsung\.hardware\.gnss-service                  u:object_r:hal_gnss_default_exec:s0
 /vendor/bin/hw/sec\.android\.hardware\.nfc-service                      u:object_r:hal_nfc_default_exec:s0
 
 # Wakeup

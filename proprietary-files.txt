@@ -269,6 +269,29 @@ vendor/firmware/wlan-connection-roaming-backup.ini
 vendor/firmware/wlan-connection-roaming.ini
 vendor/firmware/wlan/kiwi_v2/qcom_cfg.ini
 
+# GNSS
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/bin/gps.sh:vendor/bin/hw/gps.sh
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/bin/gpsd_K43:vendor/bin/hw/gpsd_K43
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/bin/vendor.samsung.hardware.gnss-service:vendor/bin/hw/vendor.samsung.hardware.gnss-service
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_r12szhx.bin:vendor/firmware/gnss/firmware_signed_r12szhx.bin
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_r12sjpnx.bin:vendor/firmware/gnss/firmware_signed_r12sjpnx.bin
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_r12skdix.bin:vendor/firmware/gnss/firmware_signed_r12skdix.bin
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_r12sksx.bin:vendor/firmware/gnss/firmware_signed_r12sksx.bin
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_e2sxxx.bin:vendor/firmware/gnss/firmware_signed_e2sxxx.bin
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_e1sxxx.bin:vendor/firmware/gnss/firmware_signed_e1sxxx.bin
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_b7rxxx.bin:vendor/firmware/gnss/firmware_signed_b7rxxx.bin
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_e2sksx.bin:vendor/firmware/gnss/firmware_signed_e2sksx.bin
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_e1sksx.bin:vendor/firmware/gnss/firmware_signed_e1sksx.bin
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_r12sxxx.bin:vendor/firmware/gnss/firmware_signed_r12sxxx.bin
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/ca.pem:vendor/etc/gnss/ca.pem
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/cfg/gps.cfg:vendor/etc/gnss/gps.cfg
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/init.gps.apex.sh.rc:vendor/etc/init/init.gps.sh.rc
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/vendor.samsung.hardware.gnss-service.rc:vendor/etc/init/vendor.samsung.hardware.gnss-service.rc
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/lib64/gnss_aidl_lib.so:vendor/lib64/gnss_aidl_lib.so
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/lib64/libwrappergps.so:vendor/lib64/libwrappergps.so
+vendor/apex/com.samsung.android.gnss.lsi.root.signed/lib64/vendor.samsung.hardware.gnss-V3-ndk.so:vendor/lib64/vendor.samsung.hardware.gnss-V3-ndk.so
+vendor/etc/init/init.gps.rc
+
 # Google
 product/etc/permissions/privapp-permissions-google-product.xml
 product/etc/sysconfig/asi_features.xml

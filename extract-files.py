@@ -4,6 +4,15 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+from shutil import (
+    copytree,
+    ignore_patterns
+)
+import os
+import sys
+import tempfile
+from zipfile import ZipFile
+
 from extract_utils.fixups_blob import (
     blob_fixup,
     blob_fixups_user_type,
@@ -37,8 +46,19 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed(
             'android.hardware.graphics.composer@2.2-resources.so',
             'android.hardware.graphics.composer@2.2-resources_samsung.so'),
+    'vendor/bin/hw/gps.sh': blob_fixup()
+        .regex_replace('apex/com.samsung.android.gnss.lsi.root', 'vendor')
+        .regex_replace('bin/gpsd_K43', 'bin/hw/gpsd_K43')
+        .regex_replace('etc/firmware', 'firmware/gnss')
+        .regex_replace('etc/cfg', 'etc/gnss'),
     'vendor/etc/init/android.hardware.security.keymint-service.samsung.rc': blob_fixup()
         .regex_replace('-service', '-service.samsung'),
+    (
+        'vendor/etc/init/init.gps.sh.rc',
+        'vendor/etc/init/vendor.samsung.hardware.gnss-service.rc'
+    ): blob_fixup()
+        .regex_replace('apex/com.samsung.android.gnss.lsi.root', 'vendor')
+        .regex_replace('bin', 'bin/hw'),
     'vendor/etc/init/init.nfc.samsung.rc': blob_fixup()
         .regex_replace('system', 'secure_element'),
     'vendor/etc/init/init.s5e9945.rc': blob_fixup()
@@ -115,6 +135,20 @@ module = ExtractUtilsModule(
     lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,
 )
+
+if len(sys.argv) > 1 and os.path.isdir(sys.argv[1]):
+    apex_path = os.path.join(sys.argv[1], 'vendor/apex/com.samsung.android.gnss.lsi.root.signed')
+
+    if not os.path.isdir(apex_path):
+        print(f'Extracting {apex_path}...')
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            ZipFile(apex_path + '.apex').extractall(tmp_dir)
+
+            with tempfile.TemporaryDirectory() as tmp_payload_dir:
+                os.system('sudo mount -o ro ' + tmp_dir + '/apex_payload.img ' + tmp_payload_dir)
+                copytree(tmp_payload_dir, apex_path, ignore = lambda path, names: 'lost+found')
+                os.system('sudo umount ' + tmp_payload_dir)
 
 if __name__ == '__main__':
     utils = ExtractUtils.device(module)

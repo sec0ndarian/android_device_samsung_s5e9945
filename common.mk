@@ -156,6 +156,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.raw.prebuilt.xml \
     android.hardware.fingerprint.prebuilt.xml \
     android.hardware.hardware_keystore_V3.xml \
+    android.hardware.location.gps.prebuilt.xml \
     android.hardware.nfc.hce.prebuilt.xml \
     android.hardware.nfc.prebuilt.xml \
     android.hardware.se.omapi.ese.prebuilt.xml \
