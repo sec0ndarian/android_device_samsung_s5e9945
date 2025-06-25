@@ -1,5 +1,13 @@
 <compatibility-matrix version="1.0" type="framework">
     <hal format="aidl">
+        <name>vendor.samsung.hardware.gnss</name>
+        <version>3</version>
+        <interface>
+            <name>ISehGnss</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
         <name>vendor.samsung.hardware.nfc_aidl</name>
         <version>1</version>
         <interface>

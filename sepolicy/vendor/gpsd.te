@@ -1,0 +1,11 @@
+allow gpsd gpsd_exec:file execute_no_trans;
+allow gpsd vendor_toolbox_exec:file execute_no_trans;
+
+get_prop(gpsd, bootanim_system_prop)
+
+allow gpsd gnss_device:chr_file rw_file_perms;
+allow gpsd vendor_radio_device:chr_file rw_file_perms;
+
+allow gpsd sysfs_chip_id:file r_file_perms;
+
+wakelock_use(gpsd)
