@@ -62,7 +62,8 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/google/pixel \
     hardware/qcom-caf/wlan \
-    hardware/samsung
+    hardware/samsung \
+    hardware/samsung_slsi-linaro/exynos/cpboot_v3
 
 
 # AVF
@@ -187,6 +188,7 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
+    cbd \
     secril_config_svc \
     sehradiomanager \
     sehradiomanager.conf

@@ -108,6 +108,9 @@ BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := $(shell echo $$(( $(BOARD_SUPER_PARTITI
 TARGET_PRODUCT_PROP += $(COMMON_PATH)/configs/props/product.prop
 TARGET_VENDOR_PROP += $(COMMON_PATH)/configs/props/vendor.prop
 
+# RIL
+$(call soong_config_set,cbd,protocol,sipc)
+
 # Ramdisks
 BOARD_RAMDISK_USE_LZ4 := true
 BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
