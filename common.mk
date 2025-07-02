@@ -138,14 +138,10 @@ PRODUCT_PACKAGES += public.libraries.txt
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.pro.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.pro.prebuilt.xml \
     frameworks/native/data/etc/android.hardware.keystore.app_attest_key.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.keystore.app_attest_key.prebuilt.xml \
-    frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.prebuilt.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.prebuilt.xml \
     frameworks/native/data/etc/android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.uicc.prebuilt.xml \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.prebuilt.xml \
-    frameworks/native/data/etc/android.hardware.telephony.satellite.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.satellite.prebuilt.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.prebuilt.xml \
-    frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.prebuilt.xml \
-    frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.prebuilt.xml
+    frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.prebuilt.xml
 
 PRODUCT_PACKAGES += \
     android.hardware.audio.low_latency.prebuilt.xml \
@@ -157,7 +153,9 @@ PRODUCT_PACKAGES += \
     android.hardware.fingerprint.prebuilt.xml \
     android.hardware.hardware_keystore_V3.xml \
     android.hardware.location.gps.prebuilt.xml \
+    android.hardware.nfc.ese.prebuilt.xml \
     android.hardware.nfc.hce.prebuilt.xml \
+    android.hardware.nfc.hcef.prebuilt.xml \
     android.hardware.nfc.prebuilt.xml \
     android.hardware.se.omapi.ese.prebuilt.xml \
     android.hardware.se.omapi.uicc.prebuilt.xml \
@@ -169,6 +167,7 @@ PRODUCT_PACKAGES += \
     android.hardware.sensor.stepcounter.prebuilt.xml \
     android.hardware.sensor.stepdetector.prebuilt.xml \
     android.hardware.telephony.gsm.prebuilt.xml \
+    android.hardware.telephony.satellite.prebuilt.xml \
     android.hardware.usb.accessory.prebuilt.xml \
     android.hardware.usb.host.prebuilt.xml \
     android.hardware.vulkan.compute-0.prebuilt.xml \
@@ -180,6 +179,7 @@ PRODUCT_PACKAGES += \
     android.software.ipsec_tunnels.prebuilt.xml \
     android.software.opengles.deqp.level-latest.prebuilt.xml \
     android.software.vulkan.deqp.level-2023-03-01.prebuilt.xml \
+    com.nxp.mifare.prebuilt.xml \
     handheld_core_hardware.prebuilt.xml
 
 # Power
