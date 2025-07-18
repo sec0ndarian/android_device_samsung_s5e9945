@@ -102,6 +102,9 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += hdr_samsung_mx.key
 
+# Doze
+PRODUCT_PACKAGES += SamsungDoze
+
 # FastbootD
 PRODUCT_PACKAGES += fastbootd
 
