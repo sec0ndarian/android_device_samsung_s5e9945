@@ -306,12 +306,6 @@ system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
 recovery/ramdisk/init.recovery.s5e9945.rc:recovery/root/init.recovery.s5e9945.rc
 vendor/etc/ueventd.rc
 
-# Power
-vendor/lib64/libepic_helper.so
-vendor/lib64/libepicoperator.so
-vendor/lib64/vendor.samsung_slsi.hardware.epic-V1-ndk.so
-vendor/lib64/vendor.samsung_slsi.hardware.epic@1.0.so
-
 # Miscellaneous Dependencies
 vendor/lib64/libfloatingfeature.so
 vendor/lib64/libsecnativefeature.so
@@ -327,6 +321,12 @@ vendor/etc/nfc/sec_s3nsen6_swreg.bin
 vendor/etc/vintf/manifest/sec-nfc-service.xml
 vendor/lib64/nfc_nci_sec.so
 vendor/lib64/vendor.samsung.hardware.nfc_aidl-V1-ndk.so
+
+# Power
+vendor/lib64/libepic_helper.so
+vendor/lib64/libepicoperator.so
+vendor/lib64/vendor.samsung_slsi.hardware.epic-V1-ndk.so
+vendor/lib64/vendor.samsung_slsi.hardware.epic@1.0.so
 
 # RIL
 vendor/bin/dmd
