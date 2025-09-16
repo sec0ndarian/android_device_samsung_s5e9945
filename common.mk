@@ -116,8 +116,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += com.android.hardware.drm.clearkey
 
 # Display
-$(call inherit-product, $(SRC_TARGET_DIR)/product/angle_default.mk)
-
 PRODUCT_COPY_FILES += \
     vendor/samsung/s5e9945/proprietary/recovery/root/lib/firmware/sgpu/vangogh_lite_unified_evt1.bin:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/firmware/sgpu/vangogh_lite_unified_evt1.bin
 
