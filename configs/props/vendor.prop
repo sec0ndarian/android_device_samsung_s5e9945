@@ -32,6 +32,7 @@ ro.surface_flinger.has_wide_color_display=true
 ro.surface_flinger.has_HDR_display=1
 debug.sf.auto_latch_unsignaled=0
 ro.surface_flinger.set_display_power_timer_ms=200
+ro.surface_flinger.supports_background_blur=1
 vendor.hwc.drm.device=/dev/dri/card1
 
 # Power
