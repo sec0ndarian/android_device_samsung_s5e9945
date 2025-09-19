@@ -63,7 +63,11 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/pixel \
     hardware/qcom-caf/wlan \
     hardware/samsung \
-    hardware/samsung_slsi-linaro/exynos/cpboot_v3
+    hardware/samsung_slsi-linaro/codec2 \
+    hardware/samsung_slsi-linaro/exynos \
+    hardware/samsung_slsi-linaro/exynos/cpboot_v3 \
+    hardware/samsung_slsi-linaro/graphics \
+    hardware/samsung_slsi-linaro/sgpu
 
 
 # AVF
@@ -91,6 +95,23 @@ PRODUCT_PACKAGES += \
 
 TARGET_EXCLUDES_AUDIOFX := true
 
+# Codec2
+PRODUCT_PACKAGES += \
+    samsung.hardware.media.c2@1.2-service \
+    libExynosC2H264Dec \
+    libExynosC2H264Enc \
+    libExynosC2HevcDec \
+    libExynosC2HevcEnc \
+    libExynosC2Vp8Dec \
+    libExynosC2Vp8Enc \
+    libExynosC2Vp9Dec \
+    libExynosC2Vp9Enc \
+    libExynosC2Av1Dec
+
+PRODUCT_PACKAGES += \
+    codec2.vendor.base.policy \
+    codec2.vendor.ext.policy
+
 # DRM
 PRODUCT_PACKAGES += com.android.hardware.drm.clearkey
 
@@ -113,6 +134,12 @@ PRODUCT_PACKAGES += android.hardware.biometrics.fingerprint-service.samsung
 
 # General
 PRODUCT_PACKAGES += vndservicemanager
+
+# Graphics
+PRODUCT_PACKAGES += \
+    android.hardware.composer.hwc3-service.slsi \
+    android.hardware.graphics.allocator-service-sgr \
+    libdrm_sgpu
 
 # Health
 PRODUCT_PACKAGES += \

@@ -65,11 +65,7 @@ vendor/lib64/libvdis_core.so
 
 # Camera - HAL Dependencies
 vendor/lib64/libcav.so
-vendor/lib64/libcsc.so
 vendor/lib64/libexynos_sensor_interface.so
-vendor/lib64/libexynosscaler.so
-vendor/lib64/libgiantmscl.so
-vendor/lib64/libhwjpeg.so
 vendor/lib64/libhwjsqz.so
 vendor/lib64/libmpbase.so
 vendor/lib64/libsemseg.so
@@ -92,29 +88,10 @@ vendor/lib64/vendor.samsung.hardware.camera.device-V1-ndk.so
 vendor/lib64/vendor.samsung.hardware.camera.provider-V1-ndk.so
 
 # Codec2
-vendor/bin/hw/samsung.hardware.media.c2@1.2-service
-vendor/etc/init/samsung.hardware.media.c2@1.2-service.rc
 vendor/etc/media_codecs_c2.xml
 vendor/etc/media_codecs_performance_c2.xml
 vendor/etc/media_profiles_V1_0.xml
-vendor/etc/seccomp_policy/codec2.vendor.base.policy
-vendor/etc/seccomp_policy/codec2.vendor.ext.policy
 vendor/etc/vintf/manifest/sec_c2_manifest_default0_1_2.xml
-vendor/lib64/libExynosC2Av1Dec.so
-vendor/lib64/libExynosC2ComponentStore.so
-vendor/lib64/libExynosC2H264Dec.so
-vendor/lib64/libExynosC2H264Enc.so
-vendor/lib64/libExynosC2HevcDec.so
-vendor/lib64/libExynosC2HevcEnc.so
-vendor/lib64/libExynosC2Vp8Dec.so
-vendor/lib64/libExynosC2Vp8Enc.so
-vendor/lib64/libExynosC2Vp9Dec.so
-vendor/lib64/libExynosC2Vp9Enc.so
-
-# Codec2 Dependencies
-vendor/lib64/libexynosgdc.so
-vendor/lib64/libexynosutils.so
-vendor/lib64/libexynosv4l2.so
 
 # Compute - Graphics
 vendor/lib64/hw/vulkan.samsung.so
@@ -139,38 +116,6 @@ vendor/etc/dqe/calib_data_colormode0_off.xml
 
 # Display - GPU firmware
 recovery/ramdisk/lib/firmware/sgpu/vangogh_lite_unified_evt1.bin:recovery/root/lib/firmware/sgpu/vangogh_lite_unified_evt1.bin
-
-# Display - Gralloc
-vendor/bin/hw/android.hardware.graphics.allocator-aidl-service-sgr
-vendor/etc/init/android.hardware.graphics.allocator-aidl-service-sgr.rc
-vendor/lib64/libeis_utils.so
-vendor/lib64/libion_exynos.so
-
-# Display - Graphics
-vendor/lib64/libdrm_sgpu.so
-vendor/lib64/hw/android.hardware.graphics.mapper@4.0-impl-sgr.so
-vendor/lib64/libsbwchelper.so
-
-# Display - HDR
-vendor/lib64/libdisplaycolor_default.so
-vendor/lib64/libhdrwrapper.so
-vendor/lib64/vendor.samsung.libcolor.hardware.so
-
-# Display - HWC
-vendor/bin/hw/android.hardware.graphics.composer3-service.exynos
-vendor/etc/init/hwc3.rc
-vendor/etc/vintf/manifest/hwc3.xml
-vendor/lib64/android.hardware.graphics.extension.composer3-V1-ndk.so
-vendor/lib64/libExynosHWCService.so
-
-# Display - HWC Dependencies
-vendor/lib64/android.hardware.graphics.composer@2.1-resources.so:vendor/lib64/android.hardware.graphics.composer@2.1-resources_samsung.so;FIX_SONAME
-vendor/lib64/android.hardware.graphics.composer@2.2-resources.so:vendor/lib64/android.hardware.graphics.composer@2.2-resources_samsung.so;FIX_SONAME
-vendor/lib64/libacryl.so
-vendor/lib64/libdrmresource.so
-vendor/lib64/libexynosdisplay.so
-vendor/lib64/libexynosgraphicbuffer.so
-vendor/lib64/libexynosgraphicbuffer_core.so
 
 # Fingerprint
 vendor/etc/init/init.fingerprint.rc

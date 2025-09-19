@@ -153,3 +153,5 @@ BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_WLAN_DEVICE := qcwcn
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
+
+include hardware/samsung_slsi-linaro/config/BoardConfig9945.mk
