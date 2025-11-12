@@ -1,6 +1,3 @@
-# /data
-type vendor_gatekeeper_data_file, file_type, data_file_type;
-
 # Efs
 type keymaster_efs_file, fs_type;
 

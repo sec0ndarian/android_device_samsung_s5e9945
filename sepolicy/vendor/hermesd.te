@@ -13,5 +13,5 @@ binder_use(hermesd)
 
 hal_server_domain(hermesd, hal_weaver)
 
-allow hermesd vendor_gatekeeper_data_file:dir rw_dir_perms;
-allow hermesd vendor_gatekeeper_data_file:file create_file_perms;
+allow hermesd gatekeeper_vendor_data_file:dir rw_dir_perms;
+allow hermesd gatekeeper_vendor_data_file:file create_file_perms;
