@@ -11,7 +11,5 @@ set_prop(hermesd, vendor_securehw_prop)
 set_prop(hermesd, vendor_securenvm_prop)
 binder_use(hermesd)
 
+hal_server_domain(hermesd, hal_gatekeeper)
 hal_server_domain(hermesd, hal_weaver)
-
-allow hermesd gatekeeper_vendor_data_file:dir rw_dir_perms;
-allow hermesd gatekeeper_vendor_data_file:file create_file_perms;
