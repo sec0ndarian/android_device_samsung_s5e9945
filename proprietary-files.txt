@@ -70,7 +70,6 @@ vendor/lib64/libhwjsqz.so
 vendor/lib64/libmpbase.so
 vendor/lib64/libsemseg.so
 vendor/lib64/libsensorlistener.so
-vendor/lib64/libtflitecore.so
 vendor/lib64/libvpl.so
 vendor/lib64/libvpl_dof.so
 vendor/lib64/vendor.samsung.hardware.thermal-V1-ndk.so
@@ -224,7 +223,6 @@ vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signe
 vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_r12sksx.bin:vendor/firmware/gnss/firmware_signed_r12sksx.bin
 vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_e2sxxx.bin:vendor/firmware/gnss/firmware_signed_e2sxxx.bin
 vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_e1sxxx.bin:vendor/firmware/gnss/firmware_signed_e1sxxx.bin
-vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_b7rxxx.bin:vendor/firmware/gnss/firmware_signed_b7rxxx.bin
 vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_e2sksx.bin:vendor/firmware/gnss/firmware_signed_e2sksx.bin
 vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_e1sksx.bin:vendor/firmware/gnss/firmware_signed_e1sksx.bin
 vendor/apex/com.samsung.android.gnss.lsi.root.signed/etc/firmware/firmware_signed_r12sxxx.bin:vendor/firmware/gnss/firmware_signed_r12sxxx.bin
