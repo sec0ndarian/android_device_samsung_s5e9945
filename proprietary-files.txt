@@ -266,7 +266,6 @@ vendor/lib64/nfc_nci_sec.so
 vendor/lib64/vendor.samsung.hardware.nfc_aidl-V1-ndk.so
 
 # Power
-vendor/etc/task_profiles.json
 vendor/lib64/libepic_helper.so
 vendor/lib64/libepicoperator.so
 vendor/lib64/vendor.samsung_slsi.hardware.epic-V1-ndk.so

@@ -233,6 +233,9 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors-service.samsung-multihal \
     hals.conf
 
+# Task profiles
+PRODUCT_PACKAGES += task_profiles_json_s5e9945
+
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal-service.pixel \
