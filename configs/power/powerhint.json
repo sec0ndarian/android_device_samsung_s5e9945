@@ -22,6 +22,16 @@
             "ResetOnInit": true
         },
         {
+            "Name": "GPUMinFreq",
+            "Path": "/sys/kernel/gpu/gpu_min_clock",
+            "Values": [
+                0,
+                600000
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
             "Name": "TABoost",
             "Path": "/sys/kernel/ems/taskgroup/top-app/uclamp_min",
             "Values": [
@@ -133,6 +143,12 @@
             "Node": "TouchscreenEnable",
             "Duration": 0,
             "Value": "2,1"
+        },
+        {
+            "PowerHint": "EXPENSIVE_RENDERING",
+            "Node": "GPUMinFreq",
+            "Duration": 0,
+            "Value": 600000
         },
         {
             "PowerHint": "DOUBLE_TAP_TO_WAKE",
