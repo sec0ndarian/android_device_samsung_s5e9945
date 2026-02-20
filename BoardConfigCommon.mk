@@ -56,19 +56,17 @@ BOARD_MKBOOTIMG_ARGS := \
     --vendor_cmdline "" \
     --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_INIT_ARGS := $(BOARD_MKBOOTIMG_ARGS)
+MERGE_ALL_KERNEL_CONFIGS_AT_ONCE := true
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
     DTC_FLAGS=-@ \
     KCFLAGS=-D__ANDROID_COMMON_KERNEL__ \
     TARGET_SOC=s5e9945
 TARGET_KERNEL_CONFIG := \
-    $(shell KCONFIG_CONFIG=kernel/samsung/s5e9945/arch/arm64/configs/erd9945_u_gki_defconfig \
-    kernel/samsung/s5e9945/scripts/kconfig/merge_config.sh -m -r \
-    kernel/samsung/s5e9945/arch/arm64/configs/gki_defconfig \
-    kernel/samsung/s5e9945/arch/arm64/configs/s5e9945-base_defconfig \
-    kernel/samsung/s5e9945/arch/arm64/configs/s5e9945-bazel_defconfig \
-    kernel/samsung/s5e9945/arch/arm64/configs/s5e9945_user.cfg \
-    kernel/samsung/s5e9945/arch/arm64/configs/s5e9945-user_defconfig \
-    1>/dev/null; echo erd9945_u_gki_defconfig)
+    gki_defconfig \
+    s5e9945-base.config \
+    s5e9945-bazel.config \
+    s5e9945_user.config \
+    s5e9945-user.config
 TARGET_KERNEL_NO_GCC := true
 TARGET_KERNEL_SOURCE := kernel/samsung/s5e9945
 
