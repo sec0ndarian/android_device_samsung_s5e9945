@@ -11,7 +11,7 @@ genrule {
 genrule {
     name: "gen_fstab_s5e9945_vendor",
     srcs: ["fstab.s5e9945.in"],
-    cmd: "grep -Ev 'first_stage_mount|recoveryonly' $(in) > $(out)",
+    cmd: "grep -Ev ' first_stage_mount|recoveryonly' $(in) > $(out)",
     out: ["fstab.s5e9945"],
 }
 
