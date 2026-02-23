@@ -67,6 +67,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/samsung_slsi-linaro/codec2 \
     hardware/samsung_slsi-linaro/exynos \
     hardware/samsung_slsi-linaro/exynos/cpboot_v3 \
+    hardware/samsung_slsi-linaro/exynos/libaudio/audiohal_comv1 \
     hardware/samsung_slsi-linaro/graphics \
     hardware/samsung_slsi-linaro/sgpu
 
@@ -89,6 +90,7 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio-impl \
     android.hardware.soundtrigger@2.3-impl \
     audio.bluetooth.default \
+    audio.primary.erd9945 \
     audio.r_submix.default \
     audio.usbv2.default \
     audio_effects.xml \

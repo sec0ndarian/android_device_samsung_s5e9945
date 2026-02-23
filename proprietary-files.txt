@@ -1,29 +1,9 @@
 # Proprietary files
 
 # Audio - Main
-vendor/etc/LVACFS_Configuration.txt
 vendor/etc/audio_board_info.xml
 vendor/etc/mixer_gains.xml
 vendor/etc/mixer_paths.xml
-vendor/lib64/hw/audio.primary.s5e9945.so
-vendor/lib64/libSamsungPostProcessConvertor.so
-vendor/lib64/lib_SamsungRec_08020.so
-vendor/lib64/lib_SoundAlive_SRC384_ver320.so
-vendor/lib64/lib_lvacfs.so
-vendor/lib64/lib_soundaliveresampler.so
-vendor/lib64/libalsautils_sec.so
-vendor/lib64/libaudio-ril.so
-vendor/lib64/libaudioparamupdate.so
-vendor/lib64/libaudioproxy2.so
-vendor/lib64/liblastaboxmsg.so
-vendor/lib64/librecordalive.so;DUMMY_SHARED_LIB
-vendor/lib64/libsecaudioinfo.so
-vendor/lib64/libsecaudiolevel.so
-vendor/lib64/libsehbluetooth_audio_session_aidl.so
-vendor/lib64/libspeakercalibration.so
-vendor/lib64/vendor.samsung.hardware.bluetooth.audio-V2-ndk.so
-vendor/lib64/vndk/libaudioroute.so:vendor/lib64/libaudioroute_samsung.so;FIX_SONAME
-vendor/lib64/vndk/libtinyalsa.so:vendor/lib64/libtinyalsa_samsung.so;FIX_SONAME
 
 # Audio - Effects
 vendor/lib64/lib_SoundAlive_3DPosition_ver202.so
@@ -32,6 +12,7 @@ vendor/lib64/lib_SoundAlive_play_plus_ver800.so
 vendor/lib64/lib_SoundBooster_ver2000.so
 vendor/lib64/libprofileparamstorage.so
 vendor/lib64/libsecaudiocoreutils.so
+vendor/lib64/libsecaudioinfo.so
 vendor/lib64/libspatializerparamstorage.so
 vendor/lib64/soundfx/libaudioeffectoffload.so
 vendor/lib64/soundfx/libmyspace.so

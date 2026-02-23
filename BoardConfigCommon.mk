@@ -22,6 +22,17 @@ TARGET_ARCH_VARIANT := armv9-2a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_VARIANT := cortex-a76
 
+# Audio
+$(call soong_config_set_bool,erd9945AudioVars,use_camcorder_quad_mic,true)
+$(call soong_config_set_bool,erd9945AudioVars,use_quad_mic,true)
+$(call soong_config_set_bool,erd9945AudioVars,use_soundtrigger_hal,true)
+$(call soong_config_set_bool,erd9945AudioVars,use_usb_offload,true)
+$(call soong_config_set_bool,exynos_audio,SUPPORT_DIRECT_MULTI_CHANNEL_STREAM,true)
+$(call soong_config_set_bool,exynos_audio,SUPPORT_STHAL_INTERFACE,true)
+$(call soong_config_set_bool,exynos_audio,SUPPORT_USB_OFFLOAD,true)
+$(call soong_config_set,erd9945AudioVars,offload_effect_library_path,"vendor/lib64/soundfx/libaudioeffectoffload.so")
+$(call soong_config_set,exynos_audio,PROXY_LIBRARY,//$(COMMON_PATH):libaudioproxy)
+
 # DTS
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
@@ -99,6 +110,9 @@ BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     vendor \
     vendor_dlkm
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := $(shell echo $$(( $(BOARD_SUPER_PARTITION_SIZE) - 4 * 1024**2 )))
+
+# Platform
+TARGET_BOARD_PLATFORM := erd9945
 
 # Properties
 TARGET_PRODUCT_PROP += $(COMMON_PATH)/configs/props/product.prop
