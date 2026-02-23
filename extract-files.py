@@ -67,13 +67,6 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('.*sec\\.(.|\n)*D', '    </D'),
     'vendor/etc/vintf/manifest/sec_c2_manifest_default0_1_2.xml': blob_fixup()
         .regex_replace('.*t0.*\n', ''),
-    (
-        'vendor/lib64/hw/audio.primary.s5e9945.so',
-        'vendor/lib64/libaudioproxy2.so',
-        'vendor/lib64/libaudioparamupdate.so',
-    ): blob_fixup()
-        .replace_needed('libaudioroute.so', 'libaudioroute_samsung.so')
-        .replace_needed('libtinyalsa.so', 'libtinyalsa_samsung.so'),
     'vendor/lib64/hw/vulkan.samsung.so': blob_fixup()
         .clear_symbol_version('AHardwareBuffer_acquire')
         .clear_symbol_version('AHardwareBuffer_allocate')
@@ -88,11 +81,6 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('AHardwareBuffer_release'),
     'vendor/lib64/lib_profiler.so': blob_fixup()
         .replace_needed('libprotobuf-cpp-full-21.7.so', 'libprotobuf-cpp-full-21.12.so'),
-    (
-        'vendor/lib64/libalsautils_sec.so',
-        'vendor/lib64/libaudioroute_samsung.so',
-    ): blob_fixup()
-        .replace_needed('libtinyalsa.so', 'libtinyalsa_samsung.so'),
     'vendor/lib64/libsamsungcamerahal.so': blob_fixup()
         .sig_replace('e0 3a', 'a0 3b'),
     'vendor/lib64/libsec-ril.so': blob_fixup()
