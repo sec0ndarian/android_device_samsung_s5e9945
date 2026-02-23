@@ -6210,8 +6210,7 @@ void * proxy_init(void)
 #endif
 
     /* offload effect */
-    aproxy->offload_effect_lib = NULL;
-    aproxy->offload_effect_lib_update = NULL;
+    proxy_init_offload_effect_lib(aproxy);
 
     /* dualspk */
     aproxy->spk_ampL_powerOn = false;
