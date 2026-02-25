@@ -105,6 +105,7 @@ PRODUCT_PACKAGES += \
     audio_effects.xml \
     audio_policy_configuration.xml \
     bluetooth_with_le_audio_policy_configuration_7_0.xml \
+    mixer_paths.xml \
     usbv2_audio_policy_configuration.xml
 
 TARGET_EXCLUDES_AUDIOFX := true
