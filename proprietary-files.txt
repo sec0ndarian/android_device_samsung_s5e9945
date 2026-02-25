@@ -2,6 +2,9 @@
 
 # Audio - Main
 vendor/etc/audio_board_info.xml
+vendor/etc/mixer_usb_default.xml
+vendor/etc/mixer_usb_gray.xml
+vendor/etc/mixer_usb_white.xml
 
 # Audio - Effects
 vendor/lib64/lib_SoundAlive_3DPosition_ver202.so
