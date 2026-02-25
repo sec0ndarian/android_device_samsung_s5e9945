@@ -2,8 +2,6 @@
 
 # Audio - Main
 vendor/etc/audio_board_info.xml
-vendor/etc/mixer_gains.xml
-vendor/etc/mixer_paths.xml
 
 # Audio - Effects
 vendor/lib64/lib_SoundAlive_3DPosition_ver202.so
