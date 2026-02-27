@@ -531,28 +531,23 @@ void set_a2dp_suspend_mixer(int a2dp_suspend)
 #endif
 
 // Specific Mixer Control Functions for Internal Loopback Handling
-void proxy_set_mixercontrol(struct audio_proxy *aproxy, erap_trigger type, int value)
+void proxy_set_mixercontrol(struct audio_proxy *aproxy)
 {
     struct mixer_ctl *ctrl = NULL;
     char mixer_name[MAX_MIXER_NAME_LEN];
-    int ret = 0, val = value;
+    int ret = 0;
 
     pthread_rwlock_rdlock(&aproxy->mixer_update_lock);
 
-    if (type == MUTE_CONTROL) {
-        ctrl = mixer_get_ctl_by_name(aproxy->mixer, ABOX_MUTE_CONTROL_NAME);
-        snprintf(mixer_name, sizeof(mixer_name), ABOX_MUTE_CONTROL_NAME);
-    } else if (type == TICKLE_CONTROL) {
-        ctrl = mixer_get_ctl_by_name(aproxy->mixer, ABOX_TICKLE_CONTROL_NAME);
-        snprintf(mixer_name, sizeof(mixer_name), ABOX_TICKLE_CONTROL_NAME);
-    }
+    ctrl = mixer_get_ctl_by_name(aproxy->mixer, ABOX_TICKLE_CONTROL_NAME);
+    snprintf(mixer_name, sizeof(mixer_name), ABOX_TICKLE_CONTROL_NAME);
 
     if (ctrl) {
-        ret = mixer_ctl_set_value(ctrl, 0,val);
+        ret = mixer_ctl_set_value(ctrl, 0, ABOX_TICKLE_ON);
         if (ret != 0)
             ALOGE("proxy-%s: failed to set Mixer Control(%s)", __func__, mixer_name);
         else
-            ALOGI("proxy-%s: set Mixer Control(%s) to %d", __func__, mixer_name, val);
+            ALOGI("proxy-%s: set Mixer Control(%s) to %d", __func__, mixer_name, ABOX_TICKLE_ON);
     } else {
         ALOGE("proxy-%s: cannot find Mixer Control", __func__);
     }
@@ -1907,11 +1902,6 @@ static void do_operations_by_playback_route_set(struct audio_proxy *aproxy,
         fmradio_playback_stop(aproxy);
         fmradio_capture_stop(aproxy);
     }
-
-    /* Set Mute during APCall Path Change */
-    if ((aproxy->active_playback_device != routed_device) &&
-        (is_active_usage_APCall(aproxy) || is_usage_APCall(routed_ausage)))
-        proxy_set_mixercontrol(aproxy, MUTE_CONTROL, ABOX_MUTE_CNT_FOR_PATH_CHANGE);
 }
 
 static void do_operations_by_playback_route_reset(struct audio_proxy *aproxy __unused) {}
@@ -4912,7 +4902,7 @@ bool proxy_set_route(void *proxy, int ausage, int device, int modifier, bool set
                                     routed_ausage, routed_device, routed_modifier);
             } else {
                 // In case of capture routing setup, it needs A-Box early-wakeup
-                proxy_set_mixercontrol(aproxy, TICKLE_CONTROL, ABOX_TICKLE_ON);
+                proxy_set_mixercontrol(aproxy);
 
                 set_route(aproxy, routed_ausage, routed_device, routed_modifier);
             }
@@ -5761,31 +5751,6 @@ bool proxy_get_spk_ampL_power(void* proxy)
     return aproxy->spk_ampL_powerOn;
 }
 
-void proxy_set_primary_mute(void* proxy, int count)
-{
-    struct audio_proxy *aproxy = proxy;
-    struct mixer_ctl *ctrl = NULL;
-    char mixer_name[MAX_MIXER_NAME_LEN];
-    int ret = 0, val = count;
-
-    pthread_rwlock_rdlock(&aproxy->mixer_update_lock);
-
-    ctrl = mixer_get_ctl_by_name(aproxy->mixer, ABOX_MUTE_CONTROL_NAME);
-    snprintf(mixer_name, sizeof(mixer_name), ABOX_MUTE_CONTROL_NAME);
-
-    if (ctrl) {
-        ret = mixer_ctl_set_value(ctrl, 0,val);
-        if (ret != 0)
-            ALOGE("proxy-%s: failed to set primary mute(%s)", __func__, mixer_name);
-        else
-            ALOGI("proxy-%s: set set primary mute(%s) to %d", __func__, mixer_name, val);
-    } else {
-        ALOGE("proxy-%s: cannot find primary mute", __func__);
-    }
-
-    pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-}
-
 /*
  *  Proxy Dump
  */
@@ -5947,7 +5912,7 @@ bool proxy_init_route(void *proxy, char *path)
 
     if (aproxy) {
         aproxy->mixer = mixer_open(MIXER_CARD0);
-        proxy_set_mixercontrol(aproxy, TICKLE_CONTROL, ABOX_TICKLE_ON);
+        proxy_set_mixercontrol(aproxy);
         if (aproxy->mixer) {
             // In order to get add event, subscription has to be here!
             mixer_subscribe_events(aproxy->mixer, 1);
