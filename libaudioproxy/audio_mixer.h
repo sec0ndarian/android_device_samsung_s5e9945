@@ -40,13 +40,6 @@
 #define MIXER_CTL_ABOX_A2DP_SUSPEND_PARAMS     "ABOX A2DP SUSPEND PARAM"
 #define MIXER_CTL_ABOX_A2DP_SUSPEND_PARAMS_CNT 1
 
-// Mixer Control for set USB Mode
-#define ABOX_USBMODE_CONTROL_NAME "ABOX ERAP info USB On"
-
-// Mixer Control for set MUTE Control
-#define ABOX_MUTE_CONTROL_NAME "ABOX ERAP info Mute Primary"
-#define ABOX_MUTE_CNT_FOR_PATH_CHANGE 15
-
 // Mixer Control for set A-Box Early WakeUp Control
 #define ABOX_TICKLE_CONTROL_NAME "ABOX Tickle"
 #define ABOX_TICKLE_ON      1
@@ -64,17 +57,9 @@
 #define ABOX_BIT_WIDTH_WDMA3_NAME       "ABOX WDMA3 Width"
 #define ABOX_PERIOD_SIZE_WDMA3_NAME     "ABOX WDMA3 Period"
 
-typedef enum {
-    USBMODE        = 0,
-    MUTE_CONTROL,
-    TICKLE_CONTROL,
-} erap_trigger;
-
 
 // Mixer Control for set Android Audio Mode
 #define ABOX_AUDIOMODE_CONTROL_NAME "ABOX Audio Mode"
-
-#define SPK_AMPL_POWER_NAME "ABOX Spk AmpL Power"
 
 // Compress Offload Volume
 #define OFFLOAD_VOLUME_CONTROL_NAME "ABOX ComprTx0 Volume"
@@ -83,14 +68,9 @@ typedef enum {
 // Compress Offload Upscaling
 #define OFFLOAD_UPSCALE_CONTROL_NAME "ABOX ComprTx0 Format"
 
-//AEC_Control
-#define ABOX_DNN_CONTROL_NAME "ABOX DNN PROCESS" // 1 : off / 0 : on
-#define ABOX_DVTX_CONTROL_NAME "ABOX DVTx PROCESS"
-#define MIXER_CTL_ABOX_NREC_CONTROL_PARAMS_CNT 1
-
 // Call volume
 #define CALL_VOLUME_CONTROL_NAME "ABOX Speech Volume"
-#define CALL_PLAYBACK_VOLUME_MAX   15
+#define CALL_PLAYBACK_VOLUME_MAX   7
 
 #define CALL_RX_MUTE_CONTROL_NAME "ABOX Speech Rx Mute"
 #define CALL_TX_MUTE_CONTROL_NAME "ABOX DVTx Tx Mute"
@@ -130,14 +110,14 @@ typedef enum {
 #define MIXER_ON                         1
 #define MIXER_OFF                        0
 
-// USB Clock Source inforamtion mixer control
-#define MIXER_CTL_ABOX_USB_CLOCKSOURCE   "ABOX PCM ext USB SCDS"
+// USB Clock Source information mixer control
+#define MIXER_CTL_ABOX_USB_CLOCKSOURCE   "ABOX USB SCDS"
 
 // Capture VirtualPCM DAI input source mixer control
 #define MIXER_CTL_ABOX_CATPURE_VPCMDAI_INSRC    "ABOX VPCMIN_DAI0_A"
 
 // MMAP Playback Volume
-#define MIXER_CTL_ABOX_MMAP_OUT_VOLUME_CONTROL  "ABOX RDMA VOL FACTOR2"
+#define MIXER_CTL_ABOX_MMAP_OUT_VOLUME_CONTROL  "ABOX RDMA2 Vol Factor"
 #define MMAP_PLAYBACK_VOLUME_MAX   0xFFFFFF // Decimal value : 16777215
 
 // Mixer control for BT A2DP offload (MCD Specific)
@@ -165,7 +145,7 @@ typedef enum {
  ** A-Box firmware debug-level setting control and
  ** system property definition for checking current debug level information
  **/
-#define MIXER_CTL_ABOX_DEBUG_LEVEL          "ABOX Debug Level Low"
+#define MIXER_CTL_ABOX_DEBUG_LEVEL          "ABOX Debug Level"
 #define DEBUG_LEVEL_SYSTEM_PROPERTY         "ro.vendor.boot.debug_level"
 
 /* System debug level and corresponding A-Box firmware debug level defintions */

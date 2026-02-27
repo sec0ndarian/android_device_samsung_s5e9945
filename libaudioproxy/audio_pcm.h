@@ -38,41 +38,45 @@
 #define SOUND_DEVICE_ABOX_RDMA9         9       // A-Box RDMA9
 #define SOUND_DEVICE_ABOX_RDMA10        10      // A-Box RDMA10
 #define SOUND_DEVICE_ABOX_RDMA11        11      // A-Box RDMA11
+#define SOUND_DEVICE_ABOX_RDMA12        12      // A-Box RDMA12
+#define SOUND_DEVICE_ABOX_RDMA13        13      // A-Box RDMA13
+#define SOUND_DEVICE_ABOX_RDMA14        14      // A-Box RDMA14
+#define SOUND_DEVICE_ABOX_RDMA15        15      // A-Box RDMA15
 
 // Sound Devices mapped for A-Box WDMA
-#define SOUND_DEVICE_ABOX_WDMA0         12      // A-Box WDMA0
-#define SOUND_DEVICE_ABOX_WDMA1         13      // A-Box WDMA1
-#define SOUND_DEVICE_ABOX_WDMA2         14      // A-Box WDMA2
-#define SOUND_DEVICE_ABOX_WDMA3         15      // A-Box WDMA3
-#define SOUND_DEVICE_ABOX_WDMA4         16      // A-Box WDMA4
+#define SOUND_DEVICE_ABOX_WDMA0         16      // A-Box WDMA0
+#define SOUND_DEVICE_ABOX_WDMA1         17      // A-Box WDMA1
+#define SOUND_DEVICE_ABOX_WDMA2         18      // A-Box WDMA2
+#define SOUND_DEVICE_ABOX_WDMA3         19      // A-Box WDMA3
+#define SOUND_DEVICE_ABOX_WDMA4         20      // A-Box WDMA4
+#define SOUND_DEVICE_ABOX_WDMA5         21      // A-Box WDMA5
+#define SOUND_DEVICE_ABOX_WDMA6         22      // A-Box WDMA6
+#define SOUND_DEVICE_ABOX_WDMA7         23      // A-Box WDMA7
+#define SOUND_DEVICE_ABOX_WDMA8         24      // A-Box WDMA8
+#define SOUND_DEVICE_ABOX_WDMA9         25      // A-Box WDMA9
+#define SOUND_DEVICE_ABOX_WDMA10        26      // A-Box WDMA10
+#define SOUND_DEVICE_ABOX_WDMA11        27      // A-Box WDMA11
 
 // Sound Devices mapped for other DMA
-// Devices 20 & 21 are used by VTS driver
-#define SOUND_DEVICE_AUX                19      // Aux Digital Device for DP Audio
-
-/* Vitural PCM DAI Sound Card & Device Definition */
-#define SOUND_CARD1                     1
+// Devices 28 & 29 are used by VTS driver
+#define SOUND_DEVICE_AUX                31      // Aux Digital Device for DP Audio
 
 // Sound Devices using Virtual PCM DAIs with sound-card0
 // Playback devices
 #define SOUND_DEVICE_VIRT_PRIMARY_PLAYBACK      100     // primary playback virtual device
-#define SOUND_DEVICE_VIRT_FAST_PLAYBACK         101     // Fast playback virtual device
 #define SOUND_DEVICE_VIRT_AAUDIO_PLAYBACK       102     // AAudio playback virtual device
 #define SOUND_DEVICE_VIRT_DEEP_PLAYBACK         103     // Deep playback virtual device
 #define SOUND_DEVICE_VIRT_VRX_PLAYBACK          104     // CP Voice Rx playback virtual device
-#define SOUND_DEVICE_VIRT_LOOP_PLAYBACK         105     // Compress+UHQA mixed data looped to BD-mixer
 #define SOUND_DEVICE_VIRT_FM_RMIC_PLAYBACK      106     // Looped data from FM-Booster or RMic solution components
+#define SOUND_DEVICE_VIRT_MUTE_PLAYBACK         107     // Dummy Mute playback virtual device
 
 // Capture devices
-#define SOUND_DEVICE_VIRT_PRIMARY_CAPTURE       110      // primary capture virtual device
-#define SOUND_DEVICE_VIRT_MMAP_CAPTURE          111      // MMAP capture virtual device
-#define SOUND_DEVICE_VIRT_LOWLATENCY_CAPTURE    112      // low-latency capture virtual device
-
-#define SOUND_DEVICE_VIRT_VTX_CAPTURE           113      // primary capture virtual device
-//FIXME: Check below node numbers again
-#define SOUND_DEVICE_VIRT_FM_RECORD             114      // WDMA for FM Radio Recording
-#define SOUND_DEVICE_CALL_RECORD                115      // WDMA for Call Recording
-#define SOUND_DEVICE_TELEPHONYRX_RECORD         116      // TelephonyRx Recording virtual pcm
+#define SOUND_DEVICE_VIRT_PRIMARY_CAPTURE       120      // primary capture virtual device
+#define SOUND_DEVICE_VIRT_LOWLATENCY_CAPTURE    121      // low-latency capture virtual device
+#define SOUND_DEVICE_VIRT_MMAP_CAPTURE          122      // MMAP capture virtual device
+#define SOUND_DEVICE_VIRT_VTX_CAPTURE           123      // Voice call TX virtual device
+#define SOUND_DEVICE_VIRT_FM_RECORD             124      // WDMA for FM Radio Recording
+#define SOUND_DEVICE_CALL_RECORD                125      // WDMA for Call Recording
 
 // Sound card 2 device usage
 //Device  0 ~ 12 : used for A-Box DMA Dump
@@ -88,8 +92,11 @@
 #define DEFAULT_MEDIA_24_ZEROPAD_FORMAT         PCM_FORMAT_S24_LE   // 24bit PCM
 #define DEFAULT_MEDIA_32_FORMAT                 PCM_FORMAT_S32_LE   // 32bit PCM
 
+// Duration for MMAP pcm configurations
+#define PREDEFINED_MMAP_CAPTURE_DURATION    2   // 2ms DMA's limitation matched
+
 // Definition for MMAP Stream
-#define MMAP_PERIOD_SIZE (DEFAULT_MEDIA_SAMPLING_RATE/1000)
+#define MMAP_PERIOD_SIZE ((DEFAULT_MEDIA_SAMPLING_RATE/1000) * PREDEFINED_MMAP_CAPTURE_DURATION)
 #define MMAP_PERIOD_COUNT_MIN 32
 #define MMAP_PERIOD_COUNT_MAX 512
 #define MMAP_PERIOD_COUNT_DEFAULT (MMAP_PERIOD_COUNT_MAX)
@@ -108,7 +115,7 @@
 #define SAMPLING_RATE_FB                48000               // 48KHz(Full Band)
 
 #define DEFAULT_VOICE_CHANNELS          2                   // Stereo
-#define DEFAULT_VOICE_SAMPLING_RATE     SAMPLING_RATE_SWB
+#define DEFAULT_VOICE_SAMPLING_RATE     SAMPLING_RATE_FB    // 48KHz
 #define DEFAULT_VOICE_FORMAT            PCM_FORMAT_S16_LE   // 16bit PCM
 
 /* Default values for CP Voice Recording PCM Configuration */
@@ -120,8 +127,8 @@
 
 /* Default values for FM Recording PCM Configuration */
 #define DEFAULT_FM_REC_CHANNELS         2                   // Stereo
-#define DEFAULT_FM_REC_SAMPLINGRATE     48000               // 48KHz
-#define DEFAULT_FM_REC_PERIODSIZE       480                // Sync with WDMA7 config
+#define DEFAULT_FM_REC_SAMPLINGRATE     SAMPLING_RATE_FB    // 48KHz
+#define DEFAULT_FM_REC_PERIODSIZE       480                 // Sync with WDMA7 config
 #define DEFAULT_FM_REC_PERIODCOUNT      4
 #define DEFAULT_FM_REC_FORMAT           PCM_FORMAT_S16_LE   // 16bit PCM
 
@@ -152,7 +159,7 @@
 #define PRIMARY_PLAYBACK_PERIOD_COUNT   4
 #define PRIMARY_PLAYBACK_FORMAT         DEFAULT_MEDIA_FORMAT
 #define PRIMARY_PLAYBACK_START          PRIMARY_PLAYBACK_PERIOD_SIZE
-#define PRIMARY_PLAYBACK_STOP           (PRIMARY_PLAYBACK_PERIOD_SIZE * PRIMARY_PLAYBACK_PERIOD_COUNT)
+#define PRIMARY_PLAYBACK_STOP           UINT_MAX
 
 struct pcm_config pcm_config_primary_playback = {
     .channels        = PRIMARY_PLAYBACK_CHANNELS,
@@ -166,14 +173,14 @@ struct pcm_config pcm_config_primary_playback = {
 
 // PCM Configurations for Fast Playback Stream
 #define FAST_PLAYBACK_CARD              SOUND_CARD0
-#define FAST_PLAYBACK_DEVICE            SOUND_DEVICE_VIRT_FAST_PLAYBACK
+#define FAST_PLAYBACK_DEVICE            SOUND_DEVICE_ABOX_RDMA6
 
 #define FAST_PLAYBACK_CHANNELS          DEFAULT_MEDIA_CHANNELS
 #define FAST_PLAYBACK_SAMPLING_RATE     DEFAULT_MEDIA_SAMPLING_RATE
 #define FAST_PLAYBACK_PERIOD_SIZE       192
-#define FAST_PLAYBACK_PERIOD_COUNT      10 // FIXME: Check this value again original value is 2, for round-trip latency
+#define FAST_PLAYBACK_PERIOD_COUNT      4
 #define FAST_PLAYBACK_FORMAT            DEFAULT_MEDIA_FORMAT
-#define FAST_PLAYBACK_START             (FAST_PLAYBACK_PERIOD_SIZE * FAST_PLAYBACK_PERIOD_COUNT)
+#define FAST_PLAYBACK_START             (FAST_PLAYBACK_PERIOD_SIZE * 2)
 #define FAST_PLAYBACK_STOP              (FAST_PLAYBACK_PERIOD_SIZE * FAST_PLAYBACK_PERIOD_COUNT)
 
 struct pcm_config pcm_config_fast_playback = {
@@ -188,7 +195,7 @@ struct pcm_config pcm_config_fast_playback = {
 
 // PCM Configurations for Low Latency Playback Stream
 #define LOW_PLAYBACK_CARD               SOUND_CARD0
-#define LOW_PLAYBACK_DEVICE             SOUND_DEVICE_VIRT_FAST_PLAYBACK
+#define LOW_PLAYBACK_DEVICE             SOUND_DEVICE_ABOX_RDMA6
 
 #define LOW_PLAYBACK_CHANNELS           DEFAULT_MEDIA_CHANNELS
 #define LOW_PLAYBACK_SAMPLING_RATE      DEFAULT_MEDIA_SAMPLING_RATE
@@ -217,7 +224,7 @@ struct pcm_config pcm_config_low_playback = {
 #define MMAP_PLAYBACK_PERIOD_SIZE        MMAP_PERIOD_SIZE
 #define MMAP_PLAYBACK_PERIOD_COUNT       MMAP_PERIOD_COUNT_DEFAULT
 #define MMAP_PLAYBACK_FORMAT             DEFAULT_MEDIA_FORMAT
-#define MMAP_PLAYBACK_START              (MMAP_PLAYBACK_PERIOD_SIZE * 8)
+#define MMAP_PLAYBACK_START              (MMAP_PLAYBACK_PERIOD_SIZE * 4)
 #define MMAP_PLAYBACK_STOP               UINT_MAX
 
 struct pcm_config pcm_config_mmap_playback = {
@@ -374,9 +381,9 @@ struct pcm_config pcm_config_direct_playback = {
 #define USBIN_LOOPBACK_CARD             SOUND_CARD0
 #define USBIN_LOOPBACK_DEVICE           SOUND_DEVICE_ABOX_RDMA10
 
-#define USBIN_LOOPBACK_CHANNELS         DEFAULT_MEDIA_CHANNELS
+#define USBIN_LOOPBACK_CHANNELS         DEFAULT_CAPTURE_CHANNELS
 #define USBIN_LOOPBACK_SAMPLING_RATE    DEFAULT_MEDIA_SAMPLING_RATE
-#define USBIN_LOOPBACK_PERIOD_SIZE      480
+#define USBIN_LOOPBACK_PERIOD_SIZE      96
 #define USBIN_LOOPBACK_PERIOD_COUNT     4
 #define USBIN_LOOPBACK_FORMAT           DEFAULT_MEDIA_FORMAT
 #define USBIN_LOOPBACK_START            USBIN_LOOPBACK_PERIOD_SIZE
@@ -394,7 +401,7 @@ struct pcm_config pcm_config_usb_in_loopback = {
 
 // PCM Configurations for Mute Playback Stream
 #define MUTE_PLAYBACK_CARD              SOUND_CARD0
-#define MUTE_PLAYBACK_DEVICE            SOUND_DEVICE_ABOX_RDMA6
+#define MUTE_PLAYBACK_DEVICE            SOUND_DEVICE_VIRT_MUTE_PLAYBACK
 
 #define MUTE_PLAYBACK_CHANNELS          DEFAULT_MEDIA_CHANNELS
 #define MUTE_PLAYBACK_SAMPLING_RATE     DEFAULT_MEDIA_SAMPLING_RATE
@@ -506,7 +513,7 @@ struct pcm_config pcm_config_low_capture = {
 
 // PCM Configurations for MMAP Capture Stream
 #define MMAP_CAPTURE_CARD               SOUND_CARD0
-#define MMAP_CAPTURE_DEVICE             SOUND_DEVICE_VIRT_LOWLATENCY_CAPTURE
+#define MMAP_CAPTURE_DEVICE             SOUND_DEVICE_VIRT_MMAP_CAPTURE
 
 #define MMAP_CAPTURE_CHANNELS           DEFAULT_MEDIA_CHANNELS
 #define MMAP_CAPTURE_SAMPLING_RATE      DEFAULT_MEDIA_SAMPLING_RATE
@@ -613,9 +620,6 @@ struct pcm_config pcm_config_vc_quad_mic_capture = {
 #endif
 
 // PCM Configurations for Voice Call/TelephonyRx Recording Stream
-#define TELERX_RECORD_CARD              SOUND_CARD0
-#define TELERX_RECORD_DEVICE            SOUND_DEVICE_TELEPHONYRX_RECORD
-
 #define CALL_RECORD_CARD                SOUND_CARD0
 #define CALL_RECORD_DEVICE              SOUND_DEVICE_CALL_RECORD
 
@@ -638,7 +642,7 @@ struct pcm_config pcm_config_call_record = {
 };
 
 // PCM Configurations for FM Radio Recording Stream
-#define FM_RECORD_CARD                  SOUND_CARD1
+#define FM_RECORD_CARD                  SOUND_CARD0
 #define FM_RECORD_DEVICE                SOUND_DEVICE_VIRT_FM_RECORD
 
 #define FM_RECORD_CHANNELS              DEFAULT_FM_REC_CHANNELS
@@ -647,7 +651,7 @@ struct pcm_config pcm_config_call_record = {
 #define FM_RECORD_PERIOD_COUNT          DEFAULT_FM_REC_PERIODCOUNT
 #define FM_RECORD_FORMAT                DEFAULT_FM_REC_FORMAT
 #define FM_RECORD_START                 FM_RECORD_PERIOD_SIZE
-#define FM_RECORD_STOP                  FM_RECORD_PERIOD_SIZE * FM_RECORD_PERIOD_COUNT
+#define FM_RECORD_STOP                  UINT_MAX
 
 struct pcm_config pcm_config_fm_record = {
     .channels        = FM_RECORD_CHANNELS,
@@ -680,13 +684,10 @@ struct pcm_config pcm_config_hotword_capture = {
 #define MAX_PCM_PATH_LEN 256
 
 // Duration for Playback
-#define PREDEFINED_DEFAULT_PLAYBACK_DURATION      20  // 20ms
+#define PREDEFINED_DEFAULT_PLAYBACK_DURATION      10  // 10ms
 
 // Duration for DP Playback
 #define PREDEFINED_DP_PLAYBACK_DURATION     20  // 20ms
-
-// Duration for MMAP pcm configurations
-#define PREDEFINED_MMAP_CAPTURE_DURATION    1   // 1ms
 
 // Duration for Remote-Mic Playback/Capture loopback node configuration
 #define PREDEFINED_REMOTE_MIC_DURATION      20  // 20ms
