@@ -112,6 +112,8 @@ typedef enum {
 
 // USB Clock Source information mixer control
 #define MIXER_CTL_ABOX_USB_CLOCKSOURCE   "ABOX USB SCDS"
+#define MIXER_CTL_ABOX_USB_OUT_ASYNC     "ABOX USBOUT ASyncDevice"
+#define MIXER_CTL_ABOX_USB_IN_ASYNC      "ABOX USBIN ASyncDevice"
 
 // Capture VirtualPCM DAI input source mixer control
 #define MIXER_CTL_ABOX_CATPURE_VPCMDAI_INSRC    "ABOX VPCMIN_DAI0_A"

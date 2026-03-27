@@ -219,6 +219,20 @@ bool is_usb_single_clksource()
 
     return aproxy->is_usb_single_clksrc;
 }
+
+int get_usb_playback_duration()
+{
+    if (usb_out_async)
+        return PREDEFINED_USB_ASYNC_PLAYBACK_DURATION;
+    return PREDEFINED_USB_PLAYBACK_DURATION;
+}
+
+int get_usb_capture_duration()
+{
+    if (usb_in_async)
+        return PREDEFINED_USB_ASYNC_CAPTURE_DURATION;
+    return PREDEFINED_USB_CAPTURE_DURATION;
+}
 #endif
 
 /******************************************************************************/
@@ -626,7 +640,7 @@ static void set_usb_playback_modifier(void *proxy)
         /* A-Box limitation all DMA buffer size should be multiple of 16
          * therefore Period Size(Frame Count) is rounded of to nearest 4 multiple
          */
-        val = ((val * PREDEFINED_USB_PLAYBACK_DURATION) / 1000) & ~0x3;
+        val = ((val * get_usb_playback_duration()) / 1000) & ~0x3;
 
         ALOGI("proxy-%s: WDMA3 configured period-sz(%d)", __func__, val);
         ret = mixer_ctl_set_value(ctrl, 0, val);
@@ -807,7 +821,7 @@ static void enable_usb_in_loopback(void *proxy)
             pcmconfig.channels = proxy_usb_get_capture_channels(aproxy->usb_aproxy);
             /* A-Box limitation all DMA buffer size should be multiple of 16
                therefore Period Size(Frame Count) is rounded of to nearest 4 multiple */
-            pcmconfig.period_size = ((pcmconfig.rate * PREDEFINED_USB_CAPTURE_DURATION) / 1000) & ~0x3;
+            pcmconfig.period_size = ((pcmconfig.rate * get_usb_capture_duration()) / 1000) & ~0x3;
             pcmconfig.format = proxy_usb_get_capture_format(aproxy->usb_aproxy);
 
             /* check if connected USB headset's channel count is 6, then forcelly
@@ -1122,11 +1136,7 @@ static void enable_internal_path(void *proxy, int ausage, device_type target_dev
     } else if (is_usb_mic_device(target_device)) {
         if (aproxy->usb_aproxy)
             proxy_usb_open_in_proxy(aproxy->usb_aproxy);
-        if ((is_usage_CPCall(ausage) || is_usage_APCall(ausage))
-#ifdef SEC_AUDIO_SUPPORT_LISTENBACK_DSPEFFECT
-            || ausage == AUSAGE_LISTENBACK
-#endif
-        ) {
+        if (usb_in_async) {
 
             /* Open USB-Headset MIC patch loopback node */
             enable_usb_in_loopback(proxy);
@@ -1204,11 +1214,7 @@ static void disable_internal_path(void *proxy, int ausage, device_type target_de
         /* reset Mixp configuration to default values when path is disabled */
         reset_playback_modifier(aproxy);
     } else if (is_usb_mic_device(target_device)) {
-        if ((is_usage_CPCall(ausage) || is_usage_APCall(ausage))
-#ifdef SEC_AUDIO_SUPPORT_LISTENBACK_DSPEFFECT
-            || ausage == AUSAGE_LISTENBACK
-#endif
-            ) {
+        if (usb_in_async) {
             /* Close USB-Headset MIC patch loopback node */
             disable_usb_in_loopback(proxy);
         }
@@ -1656,6 +1662,18 @@ static void add_usb_path_extn(
             strncpy(path_name, tempRet, MAX_PATH_NAME_LEN);
             ALOGI("proxy-%s: path: %s", __func__, path_name);
         }
+    }
+
+    if ((is_usb_play_device(device) && usb_out_async) ||
+        (is_usb_mic_device(device) && usb_in_async)) {
+        szDump = strstr(path_name, "usb");
+        char tempRet[MAX_PATH_NAME_LEN];
+
+        strncpy(tempStr, path_name, szDump - path_name);
+        sprintf(tempRet, "%s%s%s", tempStr, "async-", szDump);
+        strncpy(path_name, tempRet, MAX_PATH_NAME_LEN);
+        ALOGI("proxy-%s: path: %s", __func__, path_name);
+
     }
 }
 
@@ -2110,7 +2128,7 @@ static int check_direct_config_support(struct audio_proxy_stream *apstream)
             if (apstream->requested_sample_rate != apstream->pcmconfig.rate) {
                 apstream->pcmconfig.rate = apstream->requested_sample_rate;
             }
-            apstream->pcmconfig.period_size = (apstream->pcmconfig.rate * PREDEFINED_USB_PLAYBACK_DURATION) / 1000;
+            apstream->pcmconfig.period_size = (apstream->pcmconfig.rate * get_usb_playback_duration()) / 1000;
 
             // DMA in A-Box is 128-bit aligned, so period_size has to be multiple of 4 frames
             apstream->pcmconfig.period_size &= 0xFFFFFFFC;
@@ -5616,6 +5634,10 @@ int proxy_set_parameters(void *proxy, void *parameters)
 #ifdef SUPPORT_USB_OFFLOAD
     /* Check USB parameters */
     status = proxy_usb_set_parameters((void *)aproxy->usb_aproxy, parameters);
+    struct mixer_ctl *ctrl = mixer_get_ctl_by_name(aproxy->mixer, MIXER_CTL_ABOX_USB_OUT_ASYNC);
+    usb_out_async = mixer_ctl_get_value(ctrl, 0);
+    ctrl = mixer_get_ctl_by_name(aproxy->mixer, MIXER_CTL_ABOX_USB_IN_ASYNC);
+    usb_in_async = mixer_ctl_get_value(ctrl, 0);
 #endif
 
     return status;
