@@ -2890,12 +2890,11 @@ void *proxy_create_playback_stream(void *proxy, int type, void *config, char *ad
 
     /* Sets basic configuration from Stream Type. */
     switch (apstream->stream_type) {
-        // For VTS
+        // For HiFi Playback over USB
         case ASTREAM_PLAYBACK_NO_ATTRIBUTE:
-            apstream->sound_card = PRIMARY_PLAYBACK_CARD;
-            apstream->sound_device = PRIMARY_PLAYBACK_DEVICE;
-            apstream->pcmconfig = pcm_config_primary_playback;
-
+            apstream->sound_card = DIRECT_PLAYBACK_CARD;
+            apstream->sound_device = DIRECT_PLAYBACK_DEVICE;
+            apstream->pcmconfig = pcm_config_deep_playback_suhqa;
             break;
 
         case ASTREAM_PLAYBACK_PRIMARY:
