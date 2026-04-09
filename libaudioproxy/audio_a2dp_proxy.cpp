@@ -153,7 +153,6 @@ static void destroyA2DPInstance(void)
         a2dp_instance = NULL;
         ALOGI("proxy-%s: destroyed A2DP Proxy Instance!", __func__);
     }
-    return;
 }
 
 

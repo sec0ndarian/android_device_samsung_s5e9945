@@ -94,7 +94,6 @@ static void destroyUSBInstance(void)
         usb_instance = NULL;
         ALOGI("proxy-%s: destroyed Audio Proxy USB Instance!", __func__);
     }
-    return;
 }
 
 /******************************************************************************/
@@ -394,8 +393,6 @@ static void usb_remove_device_info(void *proxy, int direction)
             free(devinfo_node);
         }
     }
-
-    return;
 }
 static void usb_print_device_info(void *proxy, int direction)
 {
@@ -424,8 +421,6 @@ static void usb_print_device_info(void *proxy, int direction)
                 ALOGI("\t %d", devinfo_node->rates[idx]);
         }
     }
-
-    return;
 }
 
 static int usb_get_best_matching_format(
@@ -827,8 +822,6 @@ static void usb_audio_gain_unload_xml(void *proxy)
         audio_route_free(aproxy_usb->usb_ar);
         aproxy_usb->usb_ar = NULL;
     }
-
-    return;
 }
 
 /* Check to VID (Vendor ID):PID (Product ID) of USB Device and enable gain-control */
@@ -907,7 +900,6 @@ static void usb_audio_gain_control_enable(void *proxy)
 
 err:
     if (fd >= 0) close(fd);
-    return;
 }
 
 static void usb_audio_gain_control_disable(void *proxy)
@@ -922,8 +914,6 @@ static void usb_audio_gain_control_disable(void *proxy)
     } else if (aproxy_usb->usb_gaincontrol_needed) {
         ALOGI("proxy-%s: USB Device still in use", __func__);
     }
-
-    return;
 }
 
 /* Function should be called with usb_lock mutex */
@@ -987,8 +977,6 @@ err_open:
     }
     if (dummy)
         free(dummy);
-
-    return;
 }
 
 /* Function should be called with usb_lock mutex */
@@ -1005,8 +993,6 @@ static void usb_close_out_proxy(struct audio_proxy_usb *aproxy_usb)
             aproxy_usb->usb_out_status = false;
         }
     }
-
-    return ;
 }
 
 static void usb_open_in_proxy(struct audio_proxy_usb *aproxy_usb)
@@ -1062,8 +1048,6 @@ err_open:
         pcm_close(aproxy_usb->usb_in_pcm);
         aproxy_usb->usb_in_pcm = NULL;
     }
-
-    return;
 }
 
 static void usb_close_in_proxy(struct audio_proxy_usb *aproxy_usb)
@@ -1075,8 +1059,6 @@ static void usb_close_in_proxy(struct audio_proxy_usb *aproxy_usb)
         }
         ALOGI("proxy-%s: closed USB In PCM Device", __func__);
     }
-
-    return ;
 }
 
 static bool parse_card_device_params(const char *kvpairs, int *card, int *device)
@@ -1235,8 +1217,6 @@ void proxy_usb_playback_prepare(void *proxy_usb, bool set_default)
         aproxy_usb->usb_out_active_pcmconfig.rate,
         aproxy_usb->usb_out_active_pcmconfig.channels,
         aproxy_usb->usb_out_active_pcmconfig.format);
-
-    return;
 }
 
 int proxy_usb_getparam_playback_stream(void *proxy_usb, void *query_params, void *reply_params)
@@ -1342,8 +1322,6 @@ void proxy_usb_capture_prepare(void *proxy_usb, bool set_default)
             aproxy_usb->usb_in_active_pcmconfig.rate,
             aproxy_usb->usb_in_active_pcmconfig.channels,
             aproxy_usb->usb_in_active_pcmconfig.format);
-
-    return;
 }
 
 int proxy_usb_getparam_capture_stream(void *proxy_usb, void *query_params, void *reply_params)
@@ -1510,8 +1488,6 @@ void proxy_usb_out_reset_config(void *proxy_usb)
         aproxy_usb->active_playback_picked_channels);
 
     pthread_mutex_unlock(&aproxy_usb->usb_lock);
-
-    return;
 }
 
 void proxy_usb_open_out_proxy(void *proxy_usb)
@@ -1522,8 +1498,6 @@ void proxy_usb_open_out_proxy(void *proxy_usb)
     usb_open_out_proxy(aproxy_usb);
 
     pthread_mutex_unlock(&aproxy_usb->usb_lock);
-
-    return;
 }
 void proxy_usb_close_out_proxy(void *proxy_usb)
 {
@@ -1533,8 +1507,6 @@ void proxy_usb_close_out_proxy(void *proxy_usb)
     usb_close_out_proxy(aproxy_usb);
 
     pthread_mutex_unlock(&aproxy_usb->usb_lock);
-
-    return;
 }
 void proxy_usb_open_in_proxy(void *proxy_usb)
 {
@@ -1544,8 +1516,6 @@ void proxy_usb_open_in_proxy(void *proxy_usb)
     usb_open_in_proxy(aproxy_usb);
 
     pthread_mutex_unlock(&aproxy_usb->usb_lock);
-
-    return;
 }
 void proxy_usb_close_in_proxy(void *proxy_usb)
 {
@@ -1555,8 +1525,6 @@ void proxy_usb_close_in_proxy(void *proxy_usb)
     usb_close_in_proxy(aproxy_usb);
 
     pthread_mutex_unlock(&aproxy_usb->usb_lock);
-
-    return;
 }
 
 void proxy_usb_set_gain(void *proxy_usb, char *path_name)
@@ -1565,14 +1533,12 @@ void proxy_usb_set_gain(void *proxy_usb, char *path_name)
     char gain_name[MAX_USB_PATH_LEN];
 
     if (!aproxy_usb->usb_gaincontrol_needed)
-        return ;
+        return;
 
     strlcpy(gain_name, path_name, MAX_USB_PATH_LEN);
     strlcat(gain_name, "-gain", MAX_USB_PATH_LEN);
     audio_route_apply_and_update_path(aproxy_usb->usb_ar, gain_name);
     ALOGI("proxy-%s: routed to %s", __func__, gain_name);
-
-    return;
 }
 
 void proxy_usb_reset_gain(void *proxy_usb, char *path_name)
@@ -1581,14 +1547,12 @@ void proxy_usb_reset_gain(void *proxy_usb, char *path_name)
     char gain_name[MAX_USB_PATH_LEN];
 
     if (!aproxy_usb->usb_gaincontrol_needed)
-        return ;
+        return;
 
     strlcpy(gain_name, path_name, MAX_USB_PATH_LEN);
     strlcat(gain_name, "-gain", MAX_USB_PATH_LEN);
     audio_route_reset_and_update_path(aproxy_usb->usb_ar, gain_name);
     ALOGI("proxy-%s: routed to %s", __func__, gain_name);
-
-    return;
 }
 
 int proxy_usb_set_parameters(void *proxy_usb, void *parameters)
@@ -1836,6 +1800,4 @@ void proxy_usb_deinit(void* proxy_usb)
 
     destroyUSBInstance();
     ALOGI("proxy-%s: audio_proxy_usb instance destroyed", __func__);
-
-    return ;
 }
