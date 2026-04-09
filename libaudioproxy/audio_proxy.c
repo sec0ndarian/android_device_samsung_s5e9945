@@ -100,7 +100,6 @@ static void destroyInstance(void)
         instance = NULL;
         ALOGI("proxy-%s: destroyed Audio Proxy Instance!", __func__);
     }
-    return;
 }
 
 /******************************************************************************/
@@ -212,8 +211,6 @@ void update_usb_clksource_info(bool flag)
     }
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return;
 }
 
 bool is_usb_single_clksource()
@@ -458,8 +455,6 @@ static void disable_voice_tx_direct_in(void *proxy)
         aproxy->call_tx_direct= NULL;
         ALOGI("proxy-%s: Voice Call TX Direct PCM Device(%s) is stopped & closed!", __func__, pcm_path);
     }
-
-    return;
 }
 
 static void enable_voice_tx_direct_in(void *proxy, device_type target_device __unused)
@@ -563,8 +558,6 @@ void proxy_set_mixercontrol(struct audio_proxy *aproxy, erap_trigger type, int v
     }
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return ;
 }
 
 #ifdef SUPPORT_USB_OFFLOAD
@@ -681,8 +674,6 @@ static void set_usb_playback_modifier(void *proxy)
     }
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return ;
 }
 
 /* Resset Modifier to default values */
@@ -783,8 +774,6 @@ static void reset_playback_modifier(void *proxy)
     }
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return ;
 }
 
 static void disable_usb_in_loopback(void *proxy)
@@ -805,8 +794,6 @@ static void disable_usb_in_loopback(void *proxy)
             ALOGI("proxy-%s: USBIn Loopback PCM Device(%s) is stopped & closed!", __func__, pcm_path);
         }
     }
-
-    return ;
 }
 
 static void enable_usb_in_loopback(void *proxy)
@@ -869,11 +856,10 @@ static void enable_usb_in_loopback(void *proxy)
         }
     }
 
-    return ;
+    return;
 
 err_open:
     disable_usb_in_loopback(proxy);
-    return ;
 }
 #endif
 
@@ -997,8 +983,6 @@ static void bta2dp_playback_start(struct audio_proxy *aproxy)
                 ALOGE("proxy-%s: failed to get BT A2DP Codec Configurations", __func__);
         }
     }
-
-    return ;
 }
 
 static void bta2dp_playback_stop(struct audio_proxy *aproxy)
@@ -1010,8 +994,6 @@ static void bta2dp_playback_stop(struct audio_proxy *aproxy)
         if (ret == 0)
             ALOGI("proxy-%s: stopped stream for BT A2DP", __func__);
     }
-
-    return ;
 }
 #endif
 
@@ -1031,8 +1013,6 @@ static void disable_mute_playback(void *proxy)
 
         ALOGI("proxy-%s: Mute playback PCM Device(%s) is stopped & closed!", __func__, pcm_path);
     }
-
-    return ;
 }
 
 static void enable_mute_playback(void *proxy)
@@ -1070,11 +1050,10 @@ static void enable_mute_playback(void *proxy)
         }
     }
 
-    return ;
+    return;
 
 err_open:
     disable_mute_playback(proxy);
-    return ;
 }
 
 
@@ -1123,8 +1102,6 @@ static void prepare_routing_device_config(void *proxy, int ausage, device_type t
             proxy_usb_capture_prepare(aproxy->usb_aproxy, true);
     }
 #endif
-
-    return;
 }
 
 #ifdef SEC_AUDIO_SUPPORT_LISTENBACK_DSPEFFECT
@@ -1195,8 +1172,6 @@ static void enable_internal_path(void *proxy, int ausage, device_type target_dev
     }
 
 #endif
-
-    return;
 }
 
 static void disable_internal_path(void *proxy, int ausage, device_type target_device)
@@ -1262,8 +1237,6 @@ static void disable_internal_path(void *proxy, int ausage, device_type target_de
         disable_mute_playback(proxy);
     }
 #endif
-
-    return ;
 }
 
 // Voice Call PCM Handler
@@ -1631,8 +1604,6 @@ static void make_path(audio_usage ausage, device_type device, char *path_name)
         strlcat(path_name, "-", MAX_PATH_NAME_LEN);
         strlcat(path_name, device_table[device], MAX_PATH_NAME_LEN);
     }
-
-    return ;
 }
 
 static void make_gain(char *path_name, char *gain_name)
@@ -1640,8 +1611,6 @@ static void make_gain(char *path_name, char *gain_name)
     memset(gain_name, 0, MAX_GAIN_PATH_NAME_LEN);
     strlcpy(gain_name, "gain-", MAX_PATH_NAME_LEN);
     strlcat(gain_name, path_name, MAX_PATH_NAME_LEN);
-
-    return ;
 }
 
 static void add_usb_path_extn(
@@ -1694,8 +1663,6 @@ static void add_usb_path_extn(
             ALOGI("proxy-%s: path: %s", __func__, path_name);
         }
     }
-
-    return;
 }
 
 static void add_dual_path(void *proxy, char *path_name)
@@ -1709,7 +1676,7 @@ static void add_dual_path(void *proxy, char *path_name)
 
         // do not add dual- path for loopback
         if (strstr(path_name, "loopback")) {
-            return ;
+            return;
         }
 
         if (szDump != NULL) {
@@ -1732,8 +1699,6 @@ static void set_modifier(void *proxy, modifier_type modifier)
     ALOGI("proxy-%s: enabled to %s", __func__, modifier_table[modifier]);
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return ;
 }
 
 /* Update Modifier */
@@ -1755,8 +1720,6 @@ static void update_modifier(void *proxy, modifier_type old_modifier, modifier_ty
     audio_route_update_mixer(aproxy->aroute);
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return ;
 }
 
 /* Disable Modifier */
@@ -1777,8 +1740,6 @@ static void reset_modifier(void *proxy, modifier_type modifier)
     ALOGI("proxy-%s: disabled %s", __func__, modifier_table[modifier]);
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return ;
 }
 
 /* Enable new Audio Path */
@@ -1794,7 +1755,7 @@ static void set_route(void *proxy, audio_usage ausage, device_type device, int m
                                     &aproxy->active_capture_modifier); //as reroute can be playback or capture
 
     if (device == DEVICE_AUX_DIGITAL)
-        return ;
+        return;
 
     pthread_rwlock_rdlock(&aproxy->mixer_update_lock);
 
@@ -1832,8 +1793,6 @@ static void set_route(void *proxy, audio_usage ausage, device_type device, int m
     ALOGI("proxy-%s: set gain as %s", __func__, gain_name);
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return ;
 }
 
 /* reroute Audio Path */
@@ -1908,8 +1867,6 @@ static void set_reroute(void *proxy, audio_usage old_ausage, device_type old_dev
     audio_route_update_mixer(aproxy->aroute);
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return ;
 }
 
 /* Disable Audio Path */
@@ -1932,8 +1889,6 @@ static void reset_route(void *proxy, audio_usage ausage, device_type device)
     ALOGI("proxy-%s: reset gain %s", __func__, gain_name);
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return ;
 }
 
 static void do_operations_by_playback_route_set(struct audio_proxy *aproxy,
@@ -1957,14 +1912,9 @@ static void do_operations_by_playback_route_set(struct audio_proxy *aproxy,
     if ((aproxy->active_playback_device != routed_device) &&
         (is_active_usage_APCall(aproxy) || is_usage_APCall(routed_ausage)))
         proxy_set_mixercontrol(aproxy, MUTE_CONTROL, ABOX_MUTE_CNT_FOR_PATH_CHANGE);
-
-    return ;
 }
 
-static void do_operations_by_playback_route_reset(struct audio_proxy *aproxy __unused)
-{
-    return ;
-}
+static void do_operations_by_playback_route_reset(struct audio_proxy *aproxy __unused) {}
 
 static void clr_call_path_param(void)
 {
@@ -2028,8 +1978,6 @@ static void calliope_cleanup_old(const char *path, const char *prefix)
         }
         free(namelist);
     }
-
-    return ;
 }
 
 static void __calliope_dump(int fd, const char *in_prefix, const char *in_file, const char *out_prefix, const char *out_suffix)
@@ -2086,8 +2034,6 @@ static void __calliope_dump(int fd, const char *in_prefix, const char *in_file, 
 
     mask = umask(mask);
     free(buf);
-
-    return ;
 }
 
 static void calliope_ramdump(int fd)
@@ -2120,8 +2066,6 @@ static void calliope_ramdump(int fd)
     __calliope_dump(fd, SYSFS_PREFIX ABOX_DEV ABOX_DEBUG, ABOX_SLOG, ABOX_DUMP, str_time);
     __calliope_dump(fd, ABOX_REGMAP_PATH, ABOX_REG_FILE, ABOX_DUMP, str_time);
     write(fd, "Calliope snapshot done\n", strlen("Calliope snapshot done\n"));
-
-    return ;
 }
 
 /******************************************************************************/
@@ -2260,7 +2204,6 @@ static void save_written_frames(struct audio_proxy_stream *apstream, int bytes)
                 audio_bytes_per_sample(audio_format_from_pcm_format(apstream->pcmconfig.format)));
     ALOGVV("%s-%s: written = %u frames", stream_table[apstream->stream_type], __func__,
                                          (unsigned int)apstream->frames);
-    return ;
 }
 
 static void skip_pcm_processing(struct audio_proxy_stream *apstream, int bytes)
@@ -2270,7 +2213,6 @@ static void skip_pcm_processing(struct audio_proxy_stream *apstream, int bytes)
     frames = bytes / (apstream->pcmconfig.channels *
              audio_bytes_per_sample(audio_format_from_pcm_format(apstream->pcmconfig.format)));
     usleep(frames * 1000000 / proxy_get_actual_sampling_rate(apstream));
-    return ;
 }
 
 static void update_capture_pcmconfig(struct audio_proxy_stream *apstream)
@@ -2349,8 +2291,6 @@ static void update_capture_pcmconfig(struct audio_proxy_stream *apstream)
     if (i == MAX_NUM_CAPTURE_PF)
         ALOGD("%s-%s: needs re-formating to 0x%x", stream_table[apstream->stream_type], __func__,
                                                    apstream->requested_format);
-
-    return ;
 }
 
 // For Resampler
@@ -2719,8 +2659,6 @@ static void check_conversion(struct audio_proxy_stream *apstream)
         }
     }
 #endif
-
-    return ;
 }
 
 /*
@@ -2813,8 +2751,6 @@ void proxy_set_call_path_param(uint32_t set, uint32_t param, int32_t value)
         ALOGI("proxy-%s: set Call path parameter idx(0x%x)", __func__, param);
         set_call_path_param();
     }
-
-    return ;
 }
 
 uint32_t proxy_get_actual_channel_count(void *proxy_stream)
@@ -2898,8 +2834,6 @@ void  proxy_offload_set_nonblock(void *proxy_stream)
 
     if (apstream->stream_type == ASTREAM_PLAYBACK_COMPR_OFFLOAD)
         apstream->nonblock_flag = 1;
-
-    return ;
 }
 
 int proxy_offload_compress_func(void *proxy_stream, int func_type)
@@ -2985,7 +2919,7 @@ void *proxy_create_playback_stream(void *proxy, int type, void *config, char *ad
     apstream = (struct audio_proxy_stream *)calloc(1, sizeof(struct audio_proxy_stream));
     if (!apstream) {
         ALOGE("proxy-%s: failed to allocate memory for Proxy Stream", __func__);
-        return NULL;;
+        return NULL;
     }
 
     /* Stores the requested configurations. */
@@ -3166,8 +3100,6 @@ void proxy_destroy_playback_stream(void *proxy_stream)
 
         free(apstream);
     }
-
-    return ;
 }
 
 int proxy_close_playback_stream(void *proxy_stream)
@@ -3958,7 +3890,6 @@ void proxy_set_best_playback_pcmconfig(
             stream_table[apstream->stream_type], __func__);
     }
 #endif
-    return;
 }
 
 /* reset playback pcm config for USB device default */
@@ -3970,7 +3901,6 @@ void proxy_reset_playback_pcmconfig(void *proxy __unused)
     /* reset USB playback config to default values */
     proxy_usb_out_reset_config(aproxy->usb_aproxy);
 #endif
-    return;
 }
 
 void proxy_dump_playback_stream(void *proxy_stream, int fd)
@@ -4010,8 +3940,6 @@ void proxy_dump_playback_stream(void *proxy_stream, int fd)
         snprintf(buffer, len, "\tOffload Fragments: %d\n",apstream->comprconfig.fragments);
         write(fd,buffer,strlen(buffer));
     }
-
-    return ;
 }
 
 
@@ -4027,7 +3955,7 @@ void *proxy_create_capture_stream(void *proxy, int type, int usage, void *config
     apstream = (struct audio_proxy_stream *)calloc(1, sizeof(struct audio_proxy_stream));
     if (!apstream) {
         ALOGE("proxy-%s: failed to allocate memory for Proxy Stream", __func__);
-        return NULL;;
+        return NULL;
     }
 
     /* Stores the requested configurationss */
@@ -4211,8 +4139,6 @@ void proxy_destroy_capture_stream(void *proxy_stream)
 
         free(apstream);
     }
-
-    return ;
 }
 
 int proxy_close_capture_stream(void *proxy_stream)
@@ -4644,7 +4570,7 @@ int proxy_get_capture_pos(void *proxy_stream, int64_t *frames, int64_t *time)
     struct audio_proxy_stream *apstream = (struct audio_proxy_stream *)proxy_stream;
     unsigned int avail = 0;
     struct timespec timestamp;
-    int ret = -ENOSYS;;
+    int ret = -ENOSYS;
 
     if (frames != NULL && time != NULL) {
         *frames = 0;
@@ -4819,8 +4745,6 @@ void proxy_dump_capture_stream(void *proxy_stream, int fd)
         snprintf(buffer, len, "\tinput pcm config format: %d\n",apstream->pcmconfig.format);
         write(fd,buffer,strlen(buffer));
     }
-
-    return ;
 }
 
 void proxy_update_capture_usage(void *proxy_stream, int usage)
@@ -4834,7 +4758,6 @@ void proxy_update_capture_usage(void *proxy_stream, int usage)
     } else {
         ALOGD("proxy-%s: apstream is NULL", __func__);
     }
-    return ;
 }
 
 int proxy_get_mmap_position(void *proxy_stream, void *pos)
@@ -5073,8 +4996,6 @@ void  proxy_stop_voice_call(void *proxy)
     struct audio_proxy *aproxy = (struct audio_proxy *)proxy;
     voice_rx_stop(aproxy);
     voice_tx_stop(aproxy);
-
-    return ;
 }
 
 void proxy_start_voice_call(void *proxy)
@@ -5094,8 +5015,6 @@ void proxy_start_voice_call(void *proxy)
     }
 
     voice_tx_start(aproxy);
-
-    return ;
 }
 
 /*
@@ -5107,8 +5026,6 @@ void proxy_stop_fm_radio(void *proxy)
 
     fmradio_playback_stop(aproxy);
     fmradio_capture_stop(aproxy);
-
-    return ;
 }
 
 void proxy_start_fm_radio(void *proxy)
@@ -5117,8 +5034,6 @@ void proxy_start_fm_radio(void *proxy)
 
     fmradio_playback_start(aproxy);
     fmradio_capture_start(aproxy);
-
-    return ;
 }
 
 #ifdef SEC_AUDIO_SUPPORT_LISTENBACK_DSPEFFECT
@@ -5133,8 +5048,6 @@ void proxy_stop_karaoke_listenback(void *proxy)
      ** therefore fmradio functions are used for controlling */
     fmradio_playback_stop(aproxy);
     fmradio_capture_stop(aproxy);
-
-    return ;
 }
 
 void proxy_start_karaoke_listenback(void *proxy)
@@ -5145,8 +5058,6 @@ void proxy_start_karaoke_listenback(void *proxy)
      ** therefore fmradio functions are used for controlling */
     fmradio_playback_start(aproxy);
     fmradio_capture_start(aproxy);
-
-    return ;
 }
 #endif
 
@@ -5204,7 +5115,7 @@ void proxy_set_mixer_value_int(void *proxy, const char *name, int value)
     int ret = 0, val = value;
 
     if (name == NULL)
-        return ;
+        return;
 
     pthread_rwlock_rdlock(&aproxy->mixer_update_lock);
 
@@ -5218,8 +5129,6 @@ void proxy_set_mixer_value_int(void *proxy, const char *name, int value)
     }
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return ;
 }
 
 void proxy_set_mixer_value_string(void *proxy, const char *name, const char *value)
@@ -5229,7 +5138,7 @@ void proxy_set_mixer_value_string(void *proxy, const char *name, const char *val
     int ret = 0;
 
     if (name == NULL)
-        return ;
+        return;
 
     pthread_rwlock_rdlock(&aproxy->mixer_update_lock);
 
@@ -5244,8 +5153,6 @@ void proxy_set_mixer_value_string(void *proxy, const char *name, const char *val
     }
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return ;
 }
 
 void proxy_set_mixer_value_array(void *proxy, const char *name, const void *value, int count)
@@ -5258,7 +5165,7 @@ void proxy_set_mixer_value_array(void *proxy, const char *name, const void *valu
         aproxy = getInstance();
 
     if (name == NULL)
-        return ;
+        return;
 
     pthread_rwlock_rdlock(&aproxy->mixer_update_lock);
 
@@ -5272,8 +5179,6 @@ void proxy_set_mixer_value_array(void *proxy, const char *name, const void *valu
     }
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return ;
 }
 
 void proxy_set_audio_interface(void *proxy, unsigned int interface, unsigned int sample_rate,
@@ -5282,7 +5187,7 @@ void proxy_set_audio_interface(void *proxy, unsigned int interface, unsigned int
     struct audio_proxy *aproxy = proxy;
 
     if (aproxy == NULL)
-        return ;
+        return;
 
     if (interface == UAIF0) {
         proxy_set_mixer_value_int(proxy, MIXER_CTL_ABOX_UAIF0_SWITCH, MIXER_OFF);
@@ -5332,8 +5237,6 @@ void proxy_set_audio_interface(void *proxy, unsigned int interface, unsigned int
         proxy_set_mixer_value_int(proxy, MIXER_CTL_ABOX_UAIF3_CHANNEL, channel);
         proxy_set_mixer_value_int(proxy, MIXER_CTL_ABOX_UAIF3_SWITCH, MIXER_ON);
     }
-
-    return ;
 }
 
 // Specific Mixer Control Functions
@@ -5362,8 +5265,6 @@ void proxy_set_audiomode(void *proxy, int audiomode)
     }
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return ;
 }
 
 void proxy_set_volume(void *proxy, int volume_type, float left, float right)
@@ -5421,8 +5322,6 @@ void proxy_set_volume(void *proxy, int volume_type, float left, float right)
     }
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return;
 }
 
 void proxy_clear_apcall_txse(void)
@@ -5441,8 +5340,6 @@ void proxy_clear_apcall_txse(void)
                                 MIXER_CTL_ABOX_NREC_CONTROL_PARAMS_CNT);
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
 #endif
-
-    return ;
 }
 
 void proxy_set_apcall_txse(void)
@@ -5461,8 +5358,6 @@ void proxy_set_apcall_txse(void)
                                 MIXER_CTL_ABOX_NREC_CONTROL_PARAMS_CNT);
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
 #endif
-
-    return ;
 }
 
 void proxy_set_upscale(void *proxy, int sampling_rate, int pcm_format)
@@ -5500,8 +5395,6 @@ void proxy_set_upscale(void *proxy, int sampling_rate, int pcm_format)
     }
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return;
 }
 
 #ifdef SUPPORT_STHAL_INTERFACE
@@ -5561,8 +5454,6 @@ void proxy_call_status(void *proxy, int status)
     ALOGD("proxy-%s: Call notification to STHAL [%s]", __func__,
              (status ? "STARTING" : "STOPPED"));
 #endif
-
-    return;
 }
 
 int proxy_set_parameters(void *proxy, void *parameters)
@@ -5819,7 +5710,6 @@ void proxy_init_offload_effect_lib(void *proxy)
     } else {
         ALOGI("proxy-%s: access %s failed", __func__, OFFLOAD_EFFECT_LIBRARY_PATH);
     }
-    return;
 }
 
 void proxy_update_offload_effect(void *proxy, int type){
@@ -5894,8 +5784,6 @@ void proxy_set_primary_mute(void* proxy, int count)
     }
 
     pthread_rwlock_unlock(&aproxy->mixer_update_lock);
-
-    return ;
 }
 
 /*
@@ -6043,7 +5931,7 @@ static void start_tag(void *data, const XML_Char *tag_name, const XML_Char **att
     } else if (strcmp(tag_name, "microphone") == 0) {
         if (set_info != MICROPHONE_CHARACTERISTIC) {
             ALOGE("proxy-%s: microphone tag should be supported with microphone_characteristics tag", __func__);
-            return ;
+            return;
         }
         set_microphone_info(&aproxy->mic_info[aproxy->num_mic++], attr);
     }
@@ -6054,7 +5942,7 @@ bool proxy_init_route(void *proxy, char *path)
     struct audio_proxy *aproxy = proxy;
     struct audio_route *ar = NULL;
     bool ret = false;
-    char property[PROPERTY_VALUE_MAX] = {'\0'};;
+    char property[PROPERTY_VALUE_MAX] = {'\0'};
     int abox_debuglevel = ABOX_DEBUG_LEVEL_HIGH_VALUE;
 
     if (aproxy) {
@@ -6144,8 +6032,6 @@ void proxy_deinit_route(void *proxy)
         free(aproxy->xml_path);
     }
     ALOGI("proxy-%s: closed Mixer & deinitialized audio route", __func__);
-
-    return ;
 }
 
 void proxy_set_board_info(void *proxy)
@@ -6365,7 +6251,6 @@ void proxy_deinit(void *proxy __unused)
         destroyInstance();
         ALOGI("proxy-%s: destroyed for audio_proxy", __func__);
     }
-    return ;
 }
 
 
@@ -6477,7 +6362,6 @@ static void get_pcm_dump_name(void *proxy_stream, pcm_dump_type type, char *file
                 apstream->requested_sample_rate, popcount(apstream->requested_channel_mask), apstream->input_count);
         break;
         default:
-            return;
     }
 }
 
