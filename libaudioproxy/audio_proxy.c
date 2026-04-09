@@ -5639,10 +5639,16 @@ int proxy_set_parameters(void *proxy, void *parameters)
 #ifdef SUPPORT_USB_OFFLOAD
     /* Check USB parameters */
     status = proxy_usb_set_parameters((void *)aproxy->usb_aproxy, parameters);
-    struct mixer_ctl *ctrl = mixer_get_ctl_by_name(aproxy->mixer, MIXER_CTL_ABOX_USB_OUT_ASYNC);
-    usb_out_async = mixer_ctl_get_value(ctrl, 0);
-    ctrl = mixer_get_ctl_by_name(aproxy->mixer, MIXER_CTL_ABOX_USB_IN_ASYNC);
-    usb_in_async = mixer_ctl_get_value(ctrl, 0);
+
+    if(proxy_is_usb_playback_device_connected(aproxy->usb_aproxy)) {
+        struct mixer_ctl *ctrl = mixer_get_ctl_by_name(aproxy->mixer, MIXER_CTL_ABOX_USB_OUT_ASYNC);
+        usb_out_async = mixer_ctl_get_value(ctrl, 0);
+    }
+
+    if(proxy_is_usb_capture_device_connected(aproxy->usb_aproxy)) {
+        struct mixer_ctl *ctrl = mixer_get_ctl_by_name(aproxy->mixer, MIXER_CTL_ABOX_USB_IN_ASYNC);
+        usb_in_async = mixer_ctl_get_value(ctrl, 0);
+    }
 #endif
 
     return status;
