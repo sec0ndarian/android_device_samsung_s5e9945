@@ -56,6 +56,12 @@
 #define ABOX_CHANNELS_WDMA3_NAME        "ABOX WDMA3 Channel"
 #define ABOX_BIT_WIDTH_WDMA3_NAME       "ABOX WDMA3 Width"
 #define ABOX_PERIOD_SIZE_WDMA3_NAME     "ABOX WDMA3 Period"
+// UDMA WR0 config controls
+#define ABOX_SAMPLE_RATE_UDMA_WR0_NAME  "ABOX UDMA WR0 Rate"
+#define ABOX_CHANNELS_UDMA_WR0_NAME     "ABOX UDMA WR0 Channel"
+#define ABOX_BIT_WIDTH_UDMA_WR0_NAME    "ABOX UDMA WR0 Width"
+#define ABOX_PERIOD_SIZE_UDMA_WR0_NAME  "ABOX UDMA WR0 Period"
+#define ABOX_PACKED_UDMA_WR0_NAME       "ABOX UDMA WR0 Packed"
 
 
 // Mixer Control for set Android Audio Mode
