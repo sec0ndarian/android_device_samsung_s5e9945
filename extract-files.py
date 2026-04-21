@@ -63,6 +63,9 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/etc/init/vendor.samsung.hardware.camera.provider-service_64.rc': blob_fixup()
         .regex_replace('vendor_secdir w', 'w')
         .regex_replace('vendor_secdir', 'camera'),
+    'vendor/etc/libnfc-sec-vendor.conf': blob_fixup()
+        .regex_replace('F_', 'F_HW_')
+        .regex_replace('SW_OPT', 'RF_SW'),
     'vendor/etc/media_codecs_performance_c2.xml': blob_fixup()
         .regex_replace('.*sec\\.(.|\n)*D', '    </D'),
     'vendor/etc/vintf/manifest/sec_c2_manifest_default0_1_2.xml': blob_fixup()

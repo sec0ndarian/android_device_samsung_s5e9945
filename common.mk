@@ -163,6 +163,11 @@ PRODUCT_PACKAGES += \
 # Linker
 PRODUCT_PACKAGES += public.libraries.txt
 
+# NFC
+PRODUCT_PACKAGES += \
+    android.hardware.nfc-service.sec \
+    android.hardware.secure_element-service.thales-st33
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.pro.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.pro.prebuilt.xml \
@@ -224,9 +229,6 @@ PRODUCT_PACKAGES += \
     secril_config_svc \
     sehradiomanager \
     sehradiomanager.conf
-
-# Secure Element
-PRODUCT_PACKAGES += android.hardware.secure_element-service.thales-st33
 
 # Sensors
 PRODUCT_PACKAGES += \
