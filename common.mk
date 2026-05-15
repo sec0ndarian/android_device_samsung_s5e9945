@@ -50,14 +50,10 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # Partitions
-$(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
-
-AB_OTA_UPDATER := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Soong Namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    bootable/deprecated-ota \
     device/samsung/s5e9945 \
     hardware/google/interfaces \
     hardware/google/pixel \
@@ -71,6 +67,19 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/samsung_slsi-linaro/graphics \
     hardware/samsung_slsi-linaro/sgpu
 
+
+# A/B
+$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.mk)
+
+PRODUCT_PACKAGES += \
+    android.hardware.boot-service.default_recovery \
+    com.android.hardware.boot \
+    init.slot_symlinks.rc \
+    init.slot_symlinks.rc.recovery \
+    update_engine_sideload
+
+PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
 
 # AVF
 $(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
@@ -158,10 +167,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += init.input.rc
 
 # Kernel Modules
-PRODUCT_PACKAGES += \
-    linker.vendor_ramdisk \
-    null \
-    toolbox.vendor_ramdisk
+PRODUCT_PACKAGES += null
 
 # Linker
 PRODUCT_PACKAGES += public.libraries.txt

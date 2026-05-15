@@ -1,0 +1,15 @@
+on property:ro.boot.slot_suffix=_a
+    symlink /dev/block/by-name/boot /dev/block/by-name/boot_b
+    symlink /dev/block/by-name/dtbo /dev/block/by-name/dtbo_b
+    symlink /dev/block/by-name/init_boot /dev/block/by-name/init_boot_b
+    symlink /dev/block/by-name/recovery /dev/block/by-name/recovery_b
+    symlink /dev/block/by-name/vbmeta /dev/block/by-name/vbmeta_b
+    symlink /dev/block/by-name/vendor_boot /dev/block/by-name/vendor_boot_b
+
+on property:ro.boot.slot_suffix=_b
+    symlink /dev/block/by-name/boot /dev/block/by-name/boot_a
+    symlink /dev/block/by-name/dtbo /dev/block/by-name/dtbo_a
+    symlink /dev/block/by-name/init_boot /dev/block/by-name/init_boot_a
+    symlink /dev/block/by-name/recovery /dev/block/by-name/recovery_a
+    symlink /dev/block/by-name/vbmeta /dev/block/by-name/vbmeta_a
+    symlink /dev/block/by-name/vendor_boot /dev/block/by-name/vendor_boot_a

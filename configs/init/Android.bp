@@ -1,17 +1,16 @@
 genrule {
     name: "gen_fstab_s5e9945_recovery",
     srcs: ["fstab.s5e9945.in"],
-    cmd: `grep -Ev 'efs|product|system_|vbmeta|vendor' $(in) |
-          sed  -E 's/,?\w*mount,?|,fileencryption.*|recoveryonly,//g' |
-          sed 's/,inlinecrypt/            /' |
-          sed 's/recoveryonly/defaults/g' > $(out)`,
+    cmd: `grep -E '#|(data|system) |misc|vold' $(in) |
+          sed -E 's/,(fileencryption.*|first_stage_mount)|latemount,//g' |
+          sed 's/,inlinecrypt/            /' > $(out)`,
     out: ["recovery.fstab"],
 }
 
 genrule {
     name: "gen_fstab_s5e9945_vendor",
     srcs: ["fstab.s5e9945.in"],
-    cmd: "grep -Ev ' first_stage_mount|recoveryonly' $(in) > $(out)",
+    cmd: "grep -v 'block.*first_stage_mount' $(in) > $(out)",
     out: ["fstab.s5e9945"],
 }
 
@@ -54,5 +53,13 @@ prebuilt_etc {
     name: "init.s5e9945.usb.rc",
     src: "init.s5e9945.usb.rc",
     vendor: true,
+    relative_install_path: "init",
+}
+
+prebuilt_etc {
+    name: "init.slot_symlinks.rc",
+    src: "init.slot_symlinks.rc",
+    vendor: true,
+    recovery_available: true,
     relative_install_path: "init",
 }

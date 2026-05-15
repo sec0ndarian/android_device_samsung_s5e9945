@@ -50,6 +50,8 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('etc/cfg', 'etc/gnss'),
     'vendor/etc/init/android.hardware.security.keymint-service.samsung.rc': blob_fixup()
         .regex_replace('-service', '-service.samsung'),
+    'vendor/etc/init/init.baseband.rc': blob_fixup()
+        .regex_replace('\n.*\n.*x}\n', ''),
     (
         'vendor/etc/init/init.gps.sh.rc',
         'vendor/etc/init/vendor.samsung.hardware.gnss-service.rc'
