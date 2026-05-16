@@ -72,8 +72,15 @@ PRODUCT_SOONG_NAMESPACES += \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.mk)
 
+AB_OTA_POSTINSTALL_CONFIG += \
+    RUN_POSTINSTALL_system=true \
+    RUN_POSTINSTALL_vendor=true \
+    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+    POSTINSTALL_PATH_vendor=bin/checkpoint_gc
+
 PRODUCT_PACKAGES += \
     android.hardware.boot-service.default_recovery \
+    checkpoint_gc \
     com.android.hardware.boot \
     init.slot_symlinks.rc \
     init.slot_symlinks.rc.recovery \

@@ -1,3 +1,6 @@
+# A/B
+ro.virtual_ab.set_task_profiles=true
+
 # AVF
 hypervisor.pvmfw.path=none
 ro.boot.hypervisor.protected_vm.supported=true
