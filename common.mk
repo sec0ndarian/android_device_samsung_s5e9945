@@ -147,6 +147,7 @@ PRODUCT_PACKAGES += \
 
 # Init
 PRODUCT_PACKAGES += \
+    dev_null_stand-in \
     fstab.s5e9945_vendor \
     fstab.s5e9945_vendor_ramdisk \
     init.s5e9945.rc
@@ -157,7 +158,6 @@ PRODUCT_PACKAGES += init.input.rc
 # Kernel Modules
 PRODUCT_PACKAGES += \
     linker.vendor_ramdisk \
-    null \
     toolbox.vendor_ramdisk
 
 # Linker
