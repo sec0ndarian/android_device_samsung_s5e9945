@@ -1,0 +1,5 @@
+cc_library_shared {
+    name: "libsemseg",
+    srcs: ["semseg.c"],
+    vendor: true,
+}

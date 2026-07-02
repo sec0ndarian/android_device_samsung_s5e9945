@@ -1,0 +1,5 @@
+cc_library_shared {
+    name: "libvpl",
+    srcs: ["vpl.c"],
+    vendor: true,
+}
