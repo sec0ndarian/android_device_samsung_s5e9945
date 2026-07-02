@@ -41,27 +41,20 @@ vendor/lib64/libTsPrc_rear.so
 vendor/lib64/libeis_core.so
 vendor/lib64/libtriplecam_video_optical_zoom.so
 vendor/lib64/libtriplepreview_interface.so
-vendor/lib64/libuniapi.so
 vendor/lib64/libuniplugin.so
 vendor/lib64/libvdis_core.so
 
 # Camera - HAL Dependencies
-vendor/lib64/libcav.so
 vendor/lib64/libexynos_sensor_interface.so
 vendor/lib64/libhwjsqz.so
 vendor/lib64/libmpbase.so
-vendor/lib64/libsemseg.so
 vendor/lib64/libsensorlistener.so
-vendor/lib64/libvpl.so
-vendor/lib64/libvpl_dof.so
 vendor/lib64/vendor.samsung.hardware.thermal-V1-ndk.so
-vendor/lib64/vendor.samsung.hardware.thermal@1.0.so
 
 # Camera - Provider
 vendor/bin/hw/vendor.samsung.hardware.camera.provider-service_64
 vendor/etc/init/vendor.samsung.hardware.camera.provider-service_64.rc
 vendor/etc/vintf/manifest/vendor.samsung.hardware.camera.provider-service.xml
-vendor/lib64/lib_profiler.so
 vendor/lib64/libsamsungcamerahal.so
 vendor/lib64/libsamsungcamerahalutils.so
 vendor/lib64/libsamsungcamerahwl_impl.so
@@ -77,17 +70,6 @@ vendor/etc/vintf/manifest/sec_c2_manifest_default0_1_2.xml
 # Compute - Graphics
 vendor/lib64/hw/vulkan.samsung.so
 vendor/lib64/libSGPUOpenCL.so:vendor/lib64/libOpenCL.so;FIX_SONAME;TRYSRCFIRST
-
-# Compute - Neural Networks
-vendor/lib64/libenn_common_utils.so
-vendor/lib64/libenn_cpu_operators.so
-vendor/lib64/libenn_engine_lib.so
-vendor/lib64/libenn_model.so
-vendor/lib64/libenn_public_api_cpp_lib.so
-vendor/lib64/libenn_user_driver_cpu.so
-vendor/lib64/libenn_user_driver_gpu_lib.so
-vendor/lib64/libenn_user_driver_unified.so
-vendor/lib64/libenn_user_lib.so
 
 # DRM
 vendor/apex/com.google.android.widevine.nonupdatable.apex
@@ -112,17 +94,6 @@ vendor/firmware/APBiBF_AUDIO_SLSI.bin
 vendor/firmware/APDVTX_AUDIO_SLSI.bin
 vendor/firmware/AP_AUDIO_SLSI.bin
 vendor/firmware/Data.msc
-vendor/firmware/MFC_DOF_FE_O2_ROOT_ENN_Front.nnc
-vendor/firmware/MFC_DOF_FE_O2_ROOT_ENN_Rear.nnc
-vendor/firmware/MFC_DOF_MV_B2_O2_ROOT_ENN_Front.nnc
-vendor/firmware/MFC_DOF_MV_B2_O2_ROOT_ENN_Rear.nnc
-vendor/firmware/MFC_DOF_MV_B3_O2_ROOT_ENN_Front.nnc
-vendor/firmware/MFC_DOF_MV_B3_O2_ROOT_ENN_Rear.nnc
-vendor/firmware/MFC_DOF_MV_B4_O2_ROOT_ENN_Front.nnc
-vendor/firmware/MFC_DOF_MV_B4_O2_ROOT_ENN_Rear.nnc
-vendor/firmware/MSL.nnc
-vendor/firmware/OD_V3.4.10_11_13_QVGA_ROOT_ENN_BGRA.nnc
-vendor/firmware/OD_V3.5.3_09_26_VGA_ROOT_ENN_BGRA.nnc
 vendor/firmware/SoundAlive.bin
 vendor/firmware/a2dpcom.bin
 vendor/firmware/abox_solution.conf
@@ -140,9 +111,6 @@ vendor/firmware/cs40l26-svc.bin
 vendor/firmware/cs40l26-svc1.bin
 vendor/firmware/cs40l26-svc2.bin
 vendor/firmware/cs40l26-svc3.bin
-vendor/firmware/default_configuration.dof.front.cfg.bin
-vendor/firmware/default_configuration.dof.rear.cfg.bin
-vendor/firmware/default_configuration.flm.cfg.bin
 vendor/firmware/dolby.bin
 vendor/firmware/dsp_gkt.xml
 vendor/firmware/dsp_ivp_dm.bin
@@ -184,7 +152,6 @@ vendor/firmware/setfile_imx564.bin
 vendor/firmware/txse1.bin
 vendor/firmware/txse2.bin
 vendor/firmware/uNPU.bin
-vendor/firmware/video_cnn.nnc
 vendor/firmware/vl53l8.bin
 vendor/firmware/volctrl.bin
 vendor/firmware/volumemonitor.bin
@@ -238,12 +205,6 @@ vendor/etc/libnfc-sec-vendor.conf
 vendor/etc/libse-gto-hal.conf
 vendor/etc/nfc/sec_s3nsen6_hwreg.bin
 vendor/etc/nfc/sec_s3nsen6_swreg.bin
-
-# Power
-vendor/lib64/libepic_helper.so
-vendor/lib64/libepicoperator.so
-vendor/lib64/vendor.samsung_slsi.hardware.epic-V1-ndk.so
-vendor/lib64/vendor.samsung_slsi.hardware.epic@1.0.so
 
 # RIL
 vendor/bin/dmd

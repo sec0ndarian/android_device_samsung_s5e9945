@@ -1,5 +1,5 @@
 cc_library_shared {
     name: "libhypervintf",
-    srcs: ["libhypervintf.cpp"],
+    srcs: ["hypervintf.cpp"],
     vendor: true,
 }
