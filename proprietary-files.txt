@@ -100,12 +100,9 @@ recovery/ramdisk/lib/firmware/sgpu/vangogh_lite_unified_evt1.bin:recovery/root/l
 
 # Fingerprint
 vendor/etc/init/init.fingerprint.rc
-vendor/lib64/libegis_fp_normal_sensor_test.so
-vendor/lib64/libgf_in_system_lib.so
 vendor/lib64/libqfp_sensortest.so
 vendor/lib64/libsfp_sensor.so
 vendor/lib64/libsfp_teegw.so
-vendor/lib64/libsynaFpSensorTestNwd.so
 vendor/lib64/vendor.samsung.hardware.biometrics.fingerprint-V1-ndk.so
 
 # Firmware
