@@ -140,6 +140,7 @@ cnss_prealloc.ko
 dwc3-exynos-usb.ko
 xhci-exynos.ko
 xhci-exynos-audio.ko
+lvstest.ko
 usb_f_dm.ko
 usb_f_dm1.ko
 usb_f_conn_gadget.ko
