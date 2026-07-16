@@ -51,16 +51,6 @@ vendor/lib64/libmpbase.so
 vendor/lib64/libsensorlistener.so
 vendor/lib64/vendor.samsung.hardware.thermal-V1-ndk.so
 
-# Camera - Provider
-vendor/bin/hw/vendor.samsung.hardware.camera.provider-service_64
-vendor/etc/init/vendor.samsung.hardware.camera.provider-service_64.rc
-vendor/etc/vintf/manifest/vendor.samsung.hardware.camera.provider-service.xml
-vendor/lib64/libsamsungcamerahal.so
-vendor/lib64/libsamsungcamerahalutils.so
-vendor/lib64/libsamsungcamerahwl_impl.so
-vendor/lib64/vendor.samsung.hardware.camera.device-V1-ndk.so
-vendor/lib64/vendor.samsung.hardware.camera.provider-V1-ndk.so
-
 # Codec2
 vendor/etc/media_codecs_c2.xml
 vendor/etc/media_codecs_performance_c2.xml

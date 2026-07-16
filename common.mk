@@ -115,6 +115,9 @@ PRODUCT_PACKAGES += \
 
 TARGET_EXCLUDES_AUDIOFX := true
 
+# Camera
+PRODUCT_PACKAGES += android.hardware.camera.provider-service.samsung
+
 # Codec2
 PRODUCT_PACKAGES += \
     samsung.hardware.media.c2@1.2-service \
@@ -196,7 +199,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.audio.low_latency.prebuilt.xml \
     android.hardware.bluetooth_le.prebuilt.xml \
-    android.hardware.camera.concurrent.prebuilt.xml \
     android.hardware.camera.flash-autofocus.prebuilt.xml \
     android.hardware.camera.full.prebuilt.xml \
     android.hardware.camera.raw.prebuilt.xml \

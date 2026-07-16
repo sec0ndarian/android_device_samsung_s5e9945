@@ -1,5 +1,0 @@
-cc_library_shared {
-    name: "lib_profiler_shim",
-    srcs: ["profiler.cpp"],
-    vendor: true,
-}

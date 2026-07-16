@@ -33,6 +33,11 @@ $(call soong_config_set_bool,exynos_audio,SUPPORT_USB_OFFLOAD,true)
 $(call soong_config_set,erd9945AudioVars,offload_effect_library_path,"vendor/lib64/soundfx/libaudioeffectoffload.so")
 $(call soong_config_set,exynos_audio,PROXY_LIBRARY,//$(COMMON_PATH):libaudioproxy)
 
+# Camera
+$(call soong_config_set,samsungCameraVars,extra_ids,$(firstword 5,6))
+$(call soong_config_set_bool,samsungCameraVars,needs_sec_reserved_field,true)
+$(call soong_config_set_bool,samsungCameraVars,usage_64bit,true)
+
 # DTS
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
