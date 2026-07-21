@@ -35,7 +35,7 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 $(call inherit-product, vendor/samsung/s5e9945/s5e9945-vendor.mk)
 
 # Inherit some common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product-if-exists, vendor/lineage/config/common_full_phone.mk)
 
 
 # API Levels
