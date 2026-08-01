@@ -150,6 +150,7 @@ PRODUCT_PACKAGES += \
     dev_null_stand-in \
     fstab.s5e9945_vendor \
     fstab.s5e9945_vendor_ramdisk \
+    init.recovery.s5e9945.rc \
     init.s5e9945.rc
 
 # Input

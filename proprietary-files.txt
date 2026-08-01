@@ -211,7 +211,6 @@ system_ext/framework/com.android.hotwordenrollment.common.util.jar
 system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
 
 # Init
-recovery/ramdisk/init.recovery.s5e9945.rc:recovery/root/init.recovery.s5e9945.rc
 vendor/etc/ueventd.rc
 
 # Miscellaneous Dependencies
