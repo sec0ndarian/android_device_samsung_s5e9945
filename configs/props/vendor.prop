@@ -8,6 +8,7 @@ ro.audio.spatializer_enabled=true
 
 # Codec2
 debug.stagefright.c2inputsurface=-1
+media.c2.hal.selection=aidl
 vendor.debug.c2.sbwc.enable=true
 
 # Fingerprint
