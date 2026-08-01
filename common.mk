@@ -112,10 +112,6 @@ PRODUCT_PACKAGES += \
     libExynosC2Vp9Enc \
     libExynosC2Av1Dec
 
-PRODUCT_PACKAGES += \
-    codec2.vendor.base.policy \
-    codec2.vendor.ext.policy
-
 # DRM
 PRODUCT_PACKAGES += com.android.hardware.drm.clearkey
 
