@@ -1,0 +1,5 @@
+cc_library_shared {
+    name: "libengmode_client",
+    srcs: ["engmode_client.c"],
+    vendor: true,
+}

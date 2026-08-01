@@ -1,0 +1,5 @@
+cc_library_shared {
+    name: "libvkmanager_vendor",
+    srcs: ["vkmanager.cpp"],
+    vendor: true,
+}
