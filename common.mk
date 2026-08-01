@@ -94,7 +94,8 @@ PRODUCT_PACKAGES += \
     audio.usbv2.default \
     audio_effects.xml \
     audio_policy_configuration.xml \
-    bluetooth_with_le_audio_policy_configuration_7_0.xml
+    bluetooth_with_le_audio_policy_configuration_7_0.xml \
+    usbv2_audio_policy_configuration.xml
 
 TARGET_EXCLUDES_AUDIOFX := true
 
