@@ -1,4 +1,6 @@
-soong_namespace {}
+soong_namespace {
+    imports: ["vendor/samsung/s5e9945"],
+}
 
 prebuilt_etc {
     name: "hdr_samsung_mx.key",
