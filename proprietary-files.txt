@@ -252,15 +252,8 @@ vendor/etc/init/android.hardware.gatekeeper-service.rc
 vendor/lib64/hw/gatekeeper.s5e9945.so
 
 # Security - Hermes
-vendor/bin/hermesd
-vendor/etc/init/hermesd.rc
-vendor/etc/vintf/manifest/iweaver_aidl_v2_manifest.xml
-vendor/lib64/libhermes_bdbridge.so
 vendor/lib64/libhwvault.so
 vendor/lib64/libshctrl.so
-vendor/lib64/vendor.samsung.hardware.security.drk-V1-ndk.so
-vendor/lib64/vendor.samsung.hardware.security.drk@2.0.so
-vendor/lib64/vendor.samsung.hardware.security.hermes-V1-ndk.so
 
 # Security - Keymint
 vendor/lib64/libskeymint10device.so

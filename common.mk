@@ -128,7 +128,9 @@ PRODUCT_PACKAGES += SamsungDoze
 PRODUCT_PACKAGES += fastbootd
 
 # Fingerprint
-PRODUCT_PACKAGES += android.hardware.biometrics.fingerprint-service.samsung
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint-service.samsung \
+    hermesd
 
 # General
 PRODUCT_PACKAGES += vndservicemanager

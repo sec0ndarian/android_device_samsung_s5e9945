@@ -40,9 +40,6 @@ blob_fixups: blob_fixups_user_type = {
     'product/etc/sysconfig/sysconfig_gemini.xml': blob_fixup()
         .regex_replace('.*O.*\n', '')
         .regex_replace('<f', '    <f'),
-    'vendor/bin/hermesd': blob_fixup()
-        .binary_regex_replace(b'security.securehw.available', b'vendor.securehw.available\x00\x00')
-        .binary_regex_replace(b'security.securenvm.available', b'vendor.securenvm.available\x00\x00'),
     'vendor/bin/hw/gps.sh': blob_fixup()
         .regex_replace('apex/com.samsung.android.gnss.lsi.root', 'vendor')
         .regex_replace('bin/gpsd_K43', 'bin/hw/gpsd_K43')

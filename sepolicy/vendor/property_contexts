@@ -1,9 +1,5 @@
 # Camera
 persist.vendor.sys.camera.      u:object_r:vendor_camera_prop:s0
 
-# Hermesd
-vendor.securehw.               u:object_r:vendor_securehw_prop:s0
-vendor.securenvm.available     u:object_r:vendor_securenvm_prop:s0
-
 # Hwc
 vendor.hwc.display.                u:object_r:vendor_hwc_prop:s0

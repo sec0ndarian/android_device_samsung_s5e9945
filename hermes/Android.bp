@@ -1,0 +1,10 @@
+cc_binary {
+    name: "hermesd",
+    init_rc: ["hermesd.rc"],
+    vendor: true,
+    shared_libs: [
+        "libhidlbase",
+        "libhwvault",
+    ],
+    srcs: ["hermes.cpp"],
+}
