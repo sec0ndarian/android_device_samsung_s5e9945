@@ -253,7 +253,6 @@ vendor/lib64/hw/gatekeeper.s5e9945.so
 
 # Security - Hermes
 vendor/lib64/libhwvault.so
-vendor/lib64/libshctrl.so
 
 # Security - Keymint
 vendor/lib64/libskeymint10device.so

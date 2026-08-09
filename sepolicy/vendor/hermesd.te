@@ -4,6 +4,6 @@ type hermesd_exec, exec_type, vendor_file_type, file_type;
 init_daemon_domain(hermesd)
 
 allow hermesd tz_user_device:chr_file rw_file_perms;
-allow hermesd ssp_device:chr_file rw_file_perms;
+allow hermesd ssp_device:chr_file { open read ioctl };
 
 get_prop(hermesd, vendor_tztsdaemon_prop)

@@ -8,3 +8,9 @@ cc_binary {
     ],
     srcs: ["hermes.cpp"],
 }
+
+cc_library_shared {
+    name: "libshctrl",
+    vendor: true,
+    srcs: ["shctrl.c"],
+}
