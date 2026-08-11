@@ -2,22 +2,10 @@ cc_binary {
     name: "hermesd",
     init_rc: ["hermesd.rc"],
     vendor: true,
-    shared_libs: ["libhwvault"],
-    srcs: ["hermes.cpp"],
-}
-
-cc_library_shared {
-    name: "libhwvault",
-    vendor: true,
-    shared_libs: [
-        "libshctrl",
-        "libteecl",
+    shared_libs: ["libteecl"],
+    srcs: [
+        "hermes.c",
+        "hwvault.c",
+        "shctrl.c",
     ],
-    srcs: ["hwvault.cpp"],
-}
-
-cc_library_shared {
-    name: "libshctrl",
-    vendor: true,
-    srcs: ["shctrl.c"],
 }

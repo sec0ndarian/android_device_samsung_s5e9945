@@ -17,11 +17,8 @@ struct message {
     struct shared_mem *out;
 };
 
-extern "C" {
 void hwvault_ssp_exit();
 void hwvault_ssp_init();
-void nwd_tz_close();
-void nwd_tz_open();
 void TEEC_CloseSession(void **);
 void TEEC_FinalizeContext(void **);
 void TEEC_InitializeContext(void*, void**);
@@ -30,7 +27,6 @@ void TEEC_RegisterSharedMemory(void **, struct shared_mem *);
 void TEEC_ReleaseSharedMemory(struct shared_mem *);
 void TEECS_OpenSession(void **, void **, char[], void *, size_t, int, void *, void *, int *);
 void TEECS_SetCryptoClk(void **, int);
-}
 
 #define HV_TZ_CMD_GET_CRED  0x271f
 #define SHARED_MEM_SIZE     81924

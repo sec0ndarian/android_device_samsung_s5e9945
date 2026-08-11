@@ -1,11 +1,8 @@
 #include <unistd.h>
 
 void hwvault_get_cred(unsigned int);
-
-extern "C" {
 void nwd_tz_close();
 void nwd_tz_open();
-}
 
 int main() {
     nwd_tz_open();
