@@ -3,7 +3,7 @@
 
 int main() {
     nwd_tz_open();
-    hwvault_get_cred(11);
+    hwvault_get_cred();
     pause();
     nwd_tz_close();
     return 0;

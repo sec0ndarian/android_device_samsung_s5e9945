@@ -6,6 +6,7 @@
 #include <unistd.h>
 
 #define HV_TZ_CMD_GET_CRED   0x271f
+#define HWVAULT_CRED_SLOT    11
 #define SHARED_MEM_SIZE      140
 #define SHARED_MEM_SIZE_IN   16
 #define SHARED_MEM_SIZE_OUT  124
@@ -64,7 +65,7 @@ void hv_run_cmd() {
     hwvault_ssp_exit();
 }
 
-void hwvault_get_cred(unsigned int slot) {
+void hwvault_get_cred() {
     in.ptr = malloc(SHARED_MEM_SIZE);
     TEEC_RegisterSharedMemory(&context, &in);
     out.ptr = in.ptr + in.size;
@@ -73,7 +74,7 @@ void hwvault_get_cred(unsigned int slot) {
     in.ptr[0] = HV_TZ_CMD_GET_CRED;
     in.ptr[1] = 8;
     in.ptr[2] = 0x1000005;
-    in.ptr[3] = slot;
+    in.ptr[3] = HWVAULT_CRED_SLOT;
     hv_run_cmd();
 
     TEEC_ReleaseSharedMemory(&in);
