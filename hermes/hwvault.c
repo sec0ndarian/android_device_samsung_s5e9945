@@ -62,9 +62,7 @@ void nwd_tz_run_cmd() {
         .out = &out
     };
 
-    TEECS_SetCryptoClk(&context, 1);
     TEEC_InvokeCommand(&session, 0, &msg, NULL);
-    TEECS_SetCryptoClk(&context, 0);
 }
 
 void hv_run_cmd() {
