@@ -5,24 +5,25 @@
 #include <teecl.h>
 #include <unistd.h>
 
-#define HV_TZ_CMD_GET_CRED  0x271f
-#define SHARED_MEM_SIZE     81924
-#define TRUSTLET_PATH       "/vendor/tee/00000000-0000-0000-0000-487641557457"
-#define TRUSTLET_ID         "\0\0\0\0\0\0\0\0\0\0HvAUtW"
+#define HV_TZ_CMD_GET_CRED   0x271f
+#define SHARED_MEM_IN_SIZE   16
+#define SHARED_MEM_OUT_SIZE  124
+#define TRUSTLET_PATH        "/vendor/tee/00000000-0000-0000-0000-487641557457"
+#define TRUSTLET_ID          "\0\0\0\0\0\0\0\0\0\0HvAUtW"
 
-int shared_mem_in[SHARED_MEM_SIZE / 4];
-int shared_mem_out[SHARED_MEM_SIZE / 4];
+int shared_mem_in[SHARED_MEM_IN_SIZE / 4];
+int shared_mem_out[SHARED_MEM_OUT_SIZE / 4];
 void *context, *session;
 
 struct shared_mem in = {
     .ptr = shared_mem_in,
-    .size = SHARED_MEM_SIZE,
+    .size = SHARED_MEM_IN_SIZE,
     .mode = 1
 };
 
 struct shared_mem out = {
     .ptr = shared_mem_out,
-    .size = SHARED_MEM_SIZE,
+    .size = SHARED_MEM_OUT_SIZE,
     .mode = 2
 };
 
