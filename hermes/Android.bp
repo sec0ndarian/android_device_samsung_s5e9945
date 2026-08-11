@@ -8,4 +8,5 @@ cc_binary {
         "hwvault.c",
         "shctrl.c",
     ],
+    local_include_dirs: ["include"],
 }

@@ -1,32 +1,9 @@
 #include <fcntl.h>
+#include <shctrl.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <teecl.h>
 #include <unistd.h>
-
-struct shared_mem {
-    int *ptr;
-    size_t size;
-    int mode;
-    char reserved[12];
-};
-
-struct message {
-    long type;
-    struct shared_mem *in;
-    char reserved[16];
-    struct shared_mem *out;
-};
-
-void hwvault_ssp_exit();
-void hwvault_ssp_init();
-void TEEC_CloseSession(void **);
-void TEEC_FinalizeContext(void **);
-void TEEC_InitializeContext(void*, void**);
-void TEEC_InvokeCommand(void **, int, struct message *, int *);
-void TEEC_RegisterSharedMemory(void **, struct shared_mem *);
-void TEEC_ReleaseSharedMemory(struct shared_mem *);
-void TEECS_OpenSession(void **, void **, char[], void *, size_t, int, void *, void *, int *);
-void TEECS_SetCryptoClk(void **, int);
 
 #define HV_TZ_CMD_GET_CRED  0x271f
 #define SHARED_MEM_SIZE     81924
