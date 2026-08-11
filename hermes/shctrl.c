@@ -7,18 +7,14 @@
 #define SSP_IOCTL_INIT   _IO(SSP_IOCTL_MAGIC, 1)
 #define SSP_IOCTL_EXIT   _IOWR(SSP_IOCTL_MAGIC, 2, uint64_t)
 
-int hwvault_ssp_init() {
-    int fd, ret;
-    fd = open(SSP_DEVICE, O_RDONLY);
-    ret = ioctl(fd, SSP_IOCTL_INIT);
+void hwvault_ssp_init() {
+    int fd = open(SSP_DEVICE, O_RDONLY);
+    ioctl(fd, SSP_IOCTL_INIT);
     close(fd);
-    return ret;
 }
 
-int hwvault_ssp_exit() {
-    int fd, ret;
-    fd = open(SSP_DEVICE, O_RDONLY);
-    ret = ioctl(fd, SSP_IOCTL_EXIT);
+void hwvault_ssp_exit() {
+    int fd = open(SSP_DEVICE, O_RDONLY);
+    ioctl(fd, SSP_IOCTL_EXIT);
     close(fd);
-    return ret;
 }

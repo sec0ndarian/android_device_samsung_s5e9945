@@ -251,9 +251,6 @@ vendor/bin/hw/android.hardware.gatekeeper-service
 vendor/etc/init/android.hardware.gatekeeper-service.rc
 vendor/lib64/hw/gatekeeper.s5e9945.so
 
-# Security - Hermes
-vendor/lib64/libhwvault.so
-
 # Security - Keymint
 vendor/lib64/libskeymint10device.so
 vendor/lib64/libskeymint_cli.so
