@@ -2,7 +2,7 @@ struct shared_mem {
     int *ptr;
     size_t size;
     int mode;
-    char reserved[12];
+    char reserved[5];
 };
 
 struct message {
