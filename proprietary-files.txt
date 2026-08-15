@@ -213,11 +213,6 @@ vendor/lib64/vendor.samsung.hardware.radio.data-V1-ndk.so
 vendor/lib64/vendor.samsung.hardware.radio.messaging-V1-ndk.so
 vendor/lib64/vendor.samsung.hardware.radio.sim-V1-ndk.so
 
-# Security - Gatekeeper
-vendor/bin/hw/android.hardware.gatekeeper-service
-vendor/etc/init/android.hardware.gatekeeper-service.rc
-vendor/lib64/hw/gatekeeper.s5e9945.so
-
 # Security - Keymint
 vendor/lib64/libskeymint10device.so
 vendor/lib64/libskeymint_cli.so

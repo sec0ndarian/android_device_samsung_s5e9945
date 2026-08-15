@@ -149,6 +149,9 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint-service.samsung \
     hermesd
 
+# Gatekeeper
+PRODUCT_PACKAGES += android.hardware.gatekeeper-service.nonsecure
+
 # General
 PRODUCT_PACKAGES += vndservicemanager
 
