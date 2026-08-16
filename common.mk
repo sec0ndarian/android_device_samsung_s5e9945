@@ -68,6 +68,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/samsung_slsi-linaro/exynos \
     hardware/samsung_slsi-linaro/exynos/cpboot_v3 \
     hardware/samsung_slsi-linaro/exynos/libaudio/audiohal_comv1 \
+    hardware/samsung_slsi-linaro/exynos/libaudio/audiohal_comv1/proxy \
     hardware/samsung_slsi-linaro/graphics \
     hardware/samsung_slsi-linaro/sgpu
 
@@ -76,17 +77,15 @@ PRODUCT_SOONG_NAMESPACES += \
 $(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
 
 # Audio
-$(call soong_config_set_bool,erd9945AudioVars,use_camcorder_quad_mic,true)
-$(call soong_config_set_bool,erd9945AudioVars,use_quad_mic,true)
-$(call soong_config_set_bool,erd9945AudioVars,use_soundtrigger_hal,true)
-$(call soong_config_set_bool,erd9945AudioVars,use_usb_offload,true)
-$(call soong_config_set_bool,exynos_audio,SUPPORT_DIRECT_MULTI_CHANNEL_STREAM,true)
-$(call soong_config_set_bool,exynos_audio,SUPPORT_USB_OFFLOAD,true)
+$(call soong_config_set_bool,exynos_audio,support_direct_multi_channel_stream,true)
+$(call soong_config_set_bool,exynos_audio,use_camcorder_quad_mic,true)
+$(call soong_config_set_bool,exynos_audio,use_offload_effect_library,true)
+$(call soong_config_set_bool,exynos_audio,use_quad_mic,true)
+$(call soong_config_set_bool,exynos_audio,use_usb_offload,true)
 $(call soong_config_set_bool,frameworks_av,use_aosp_audio_policy_volumes,true)
 $(call soong_config_set_bool,frameworks_av,use_aosp_default_volume_tables,true)
 $(call soong_config_set_bool,frameworks_av,use_aosp_r_submix_audio_policy_configuration,true)
-$(call soong_config_set,erd9945AudioVars,offload_effect_library_path,"vendor/lib64/soundfx/libaudioeffectoffload.so")
-$(call soong_config_set,exynos_audio,PROXY_LIBRARY,//$(LOCAL_PATH):libaudioproxy)
+$(call soong_config_set,exynos_audio,proxy_header,//$(LOCAL_PATH):audio_proxy_headers)
 
 PRODUCT_PACKAGES += \
     SamsungDAP \

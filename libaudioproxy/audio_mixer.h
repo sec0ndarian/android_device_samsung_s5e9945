@@ -63,6 +63,10 @@
 #define ABOX_PERIOD_SIZE_UDMA_WR0_NAME  "ABOX UDMA WR0 Period"
 #define ABOX_PACKED_UDMA_WR0_NAME       "ABOX UDMA WR0 Packed"
 
+typedef enum {
+    TICKLE_CONTROL
+} erap_trigger;
+
 
 // Mixer Control for set Android Audio Mode
 #define ABOX_AUDIOMODE_CONTROL_NAME "ABOX Audio Mode"
