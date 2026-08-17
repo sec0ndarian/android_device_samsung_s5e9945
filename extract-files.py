@@ -57,9 +57,6 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('system', 'secure_element'),
     'vendor/etc/init/init.s5e9945.rc': blob_fixup()
         .regex_replace('vendor_spay', 'system'),
-    'vendor/etc/init/vendor.samsung.hardware.camera.provider-service_64.rc': blob_fixup()
-        .regex_replace('vendor_secdir w', 'w')
-        .regex_replace('vendor_secdir', 'camera'),
     'vendor/etc/libnfc-sec-vendor.conf': blob_fixup()
         .regex_replace('F_', 'F_HW_')
         .regex_replace('SW_OPT', 'RF_SW'),
@@ -81,8 +78,6 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('AHardwareBuffer_release'),
     'vendor/lib64/lib_profiler.so': blob_fixup()
         .replace_needed('libprotobuf-cpp-full-21.7.so', 'libprotobuf-cpp-full-21.12.so'),
-    'vendor/lib64/libsamsungcamerahal.so': blob_fixup()
-        .sig_replace('e0 3a', 'a0 3b'),
     'vendor/lib64/libsec-ril.so': blob_fixup()
         .replace_needed('libprotobuf-cpp-full-21.7.so', 'libprotobuf-cpp-full-21.12.so')
         .sig_replace(
