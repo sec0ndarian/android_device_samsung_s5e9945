@@ -150,7 +150,7 @@ PRODUCT_PACKAGES += \
     hermesd
 
 # Gatekeeper
-PRODUCT_PACKAGES += android.hardware.gatekeeper-service.nonsecure
+PRODUCT_PACKAGES += android.hardware.gatekeeper-service.teegris
 
 # General
 PRODUCT_PACKAGES += vndservicemanager
