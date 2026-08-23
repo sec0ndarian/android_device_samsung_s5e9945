@@ -40,6 +40,7 @@
 /vendor/bin/init\.insmod\.sh                                            u:object_r:vendor_insmod_exec:s0
 
 /vendor/bin/hw/android\.hardware\.bluetooth@[0-9]\.[0-9]-service-qti    u:object_r:hal_bluetooth_default_exec:s0
+/vendor/bin/hw/android\.hardware\.gatekeeper-service\.teegris           u:object_r:hal_gatekeeper_default_exec:s0
 /vendor/bin/hw/android\.hardware\.graphics\.allocator-aidl-service-sgr  u:object_r:hal_graphics_allocator_default_exec:s0
 /vendor/bin/hw/android\.hardware\.graphics\.composer3-service.exynos    u:object_r:hal_graphics_composer_default_exec:s0
 /vendor/bin/hw/android\.hardware\.secure_element-service\.thales-st33   u:object_r:hal_secure_element_default_exec:s0
