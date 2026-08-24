@@ -18,6 +18,7 @@ cc_binary {
         "libbinder_ndk",
         "libgatekeeper",
         "libkeymaster_portable",
+        "libteecl",
     ],
     srcs: [
         "GateKeeper.cpp",
