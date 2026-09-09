@@ -219,8 +219,6 @@ vendor/lib64/libskeymint10device.so
 vendor/lib64/libskeymint_cli.so
 
 # Security - TEEGRIS
-vendor/bin/tzdaemon
-vendor/etc/init/teegris.rc
 vendor/lib64/libteecl.so
 
 # Sensors

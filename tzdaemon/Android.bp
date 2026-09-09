@@ -1,0 +1,12 @@
+cc_binary {
+    name: "tzdaemon",
+    init_rc: ["tzdaemon.rc"],
+    srcs: [
+        "il.c",
+        "iw.c",
+        "ts.c",
+        "tz.c",
+    ],
+    local_include_dirs: ["include"],
+    vendor: true,
+}

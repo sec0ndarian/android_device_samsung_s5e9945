@@ -263,7 +263,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += task_profiles_json_s5e9945
 
 # TEEGRIS
-PRODUCT_PACKAGES += tzts_daemon
+PRODUCT_PACKAGES += \
+    tzdaemon \
+    tzts_daemon
 
 # Thermal
 PRODUCT_PACKAGES += \

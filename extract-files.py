@@ -45,8 +45,6 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('bin/gpsd_K43', 'bin/hw/gpsd_K43')
         .regex_replace('etc/firmware', 'firmware/gnss')
         .regex_replace('etc/cfg', 'etc/gnss'),
-    'vendor/bin/tzdaemon': blob_fixup()
-        .remove_needed('libuuid.so'),
     'vendor/etc/init/android.hardware.security.keymint-service.samsung.rc': blob_fixup()
         .regex_replace('-service', '-service.samsung'),
     (
