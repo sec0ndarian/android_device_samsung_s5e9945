@@ -17,6 +17,11 @@ char* path[] = {
 
 enum { TS_CMD_WRITE_DATA = 1, TS_CMD_READ_DATA = 3, TS_CMD_READ_OBJ_LIST = 5 };
 
+struct connection {
+    int fd;
+    struct message* out;
+};
+
 struct message {
     int group;
     int cmd;
@@ -154,7 +159,8 @@ struct message* write_data(struct message* in) {
 }
 
 void* ts(void* efd) {
-    int con, size, sock, epfd;
+    int fd, size, sock, epfd;
+    struct connection* con;
     struct epoll_event event;
     struct message *in, *out;
 
@@ -174,26 +180,31 @@ void* ts(void* efd) {
             epoll_wait(epfd, &event, 1, -1);
             if (event.events == EPOLLIN) {
                 if (event.data.fd == sock) {
-                    con = iwd_accept(sock);
-                    event.events = EPOLLIN | EPOLLHUP;
-                    event.data.fd = con;
-                    epoll_ctl(epfd, EPOLL_CTL_ADD, con, &event);
-                } else if (event.data.fd == con) {
+                    con = calloc(1, sizeof(struct connection));
+                    con->fd = iwd_accept(sock);
+                    event.data.ptr = con;
+                    epoll_ctl(epfd, EPOLL_CTL_ADD, con->fd, &event);
+                } else if (event.data.ptr == efd)
+                    return NULL;
+                else {
+                    con = (struct connection*)event.data.ptr;
+                    fd = con->fd;
+                    out = con->out;
+
                     if (out != NULL) {
                         free(out);
-                        out = NULL;
                     }
 
-                    iwd_recv(con, &size, 4);
+                    iwd_recv(fd, &size, 4);
                     in = malloc(size);
-                    iwd_recv(con, in, size);
+                    iwd_recv(fd, in, size);
                     break;
-                } else
-                    return NULL;
+                }
             } else {
-                close(con);
-                free(out);
-                out = NULL;
+                con = (struct connection*)event.data.ptr;
+                close(con->fd);
+                free(con->out);
+                free(con);
             }
         };
 
@@ -213,8 +224,9 @@ void* ts(void* efd) {
         out->flags = 1;
         free(in);
 
-        iwd_send(con, &out->size, 4);
-        iwd_send(con, out, out->size);
+        iwd_send(fd, &out->size, 4);
+        iwd_send(fd, out, out->size);
+        con->out = out;
     }
 
     return NULL;
